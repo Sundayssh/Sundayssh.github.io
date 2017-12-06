@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>Git配置 - I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0;"><header class="head"><h1 class="head-title u-fl"><a href="/">I'm Sunday</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2017-11-30T04:00:00.000Z">November 30, 2017</time><h1 class="post__title"><a href="/2017/11/30/2017-11-30-config git first/">Git配置</a></h1><div class="post__main echo"><blockquote>
+<p>第一次配置Git的简单步骤</p>
+</blockquote>
+<h3 id="1-安装Git客户端"><a href="#1-安装Git客户端" class="headerlink" title="1 安装Git客户端"></a>1 安装Git客户端</h3><p>   github是服务端，要想在自己电脑上使用git我们还需要一个git客户端，下载地址<a href="http://msysgit.github.com/" target="_blank" rel="noopener">Git</a><br><br>   一路默认即可。</p>
+<h2 id="2-添加密钥"><a href="#2-添加密钥" class="headerlink" title="2 添加密钥"></a>2 添加密钥</h2><ol>
+<li>首先在本地创建ssh key<br>ssh-keygen -t rsa -C “email”<br><br>email 为自己的github邮箱，其他的是不是也行，我还没有尝试。<br><br>然后去这个文件夹C:\Users\Sunday.ssh，当然不同的user不一样，找到一个后缀为pub的文件，用记事本打开。复制文本。然后去自己的github账号的Account Setting添加SSHKEY title随意，然后粘贴下来。</li>
+<li>验证是否成功<br>输入<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git<span class="meta">@github</span>.com</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果是第一次的会提示是否continue，输入yes就会看到：You’ve successfully authenticated, but GitHub does not provide shell access 。这就表示已成功连上github。<br><img src="/public/img/in-post/1366089042_1867.png" alt=""></p>
+<ol>
+<li>接下来我们要做的就是把本地仓库传到github上去，在此之前还需要设置username和email，因为github每次commit都会记录他们。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"your name"</span></span><br><span class="line">git config --global user.email <span class="string">"your_email@youremail.com"</span></span><br></pre></td></tr></table></figure>
+<p>其中your name 是你的github用户名，另外一个是登录邮箱。<br>然后进入到需要上传的代码文件夹，使用命令创建本地仓库<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></p>
+<p>然后使用下面命令连接到远程仓库<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git<span class="meta">@github</span>.com:yourName/yourRepo.git</span><br></pre></td></tr></table></figure></p>
+<p>后面为你的远程地址</p>
+<ol>
+<li><p>上传代码<br>git add .<br><br>git commit -m “description”<br><br>git push origin master</p>
+<ol>
+<li>大功告成</li>
+</ol>
+</li>
+</ol>
+<h1 id="进阶的git操作，未完待续。。。"><a href="#进阶的git操作，未完待续。。。" class="headerlink" title="进阶的git操作，未完待续。。。"></a>进阶的git操作，未完待续。。。</h1></div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/Git/">Git</a></li></ul></footer></article><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2017 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
