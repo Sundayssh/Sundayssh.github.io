@@ -8,4 +8,19 @@
 <p>第一种其实“Hello Mandy”是一个常量值，只String的一个直接量，当第一次使用时，JVM会将该直接量直接存入常量池，在用这种方式创建另外一个相同的常量时，另外一个变量名也是引用该常量，不会再创建一个一模一样的常量。</p>
 <p>第二种方法就是简单的在堆内存创建一个对象，该对象有一个“Hello Mandy”的实例变量，可以再创建无数个new String(“Hello Mandy”)，但它们是不同的对象！</p>
 <p>其实这两者的区别我还是知道的，踩了String方法的一个坑，String所有的方法都是返回一个String对象，比如substring；本人就是在这踩坑的，而且还有“==”和“equal。</p>
+<h2 id="“-”和“equal”的区别"><a href="#“-”和“equal”的区别" class="headerlink" title="“==”和“equal”的区别"></a>“==”和“equal”的区别</h2><ol>
+<li>“==”</li>
+</ol>
+<p>如果两个变量是基本类型，且数值相等，可能不是同一类型，如20和20.0，’A’和65，都返回true；<br>当两个变量不是同一类型时，只有它们它们引用同一个对象时才会返回true；</p>
+<ol>
+<li>“equal”</li>
+</ol>
+<p>实际上默认的Object类的equal和==没有区别，但String重写了equal方法：只要两个对象包含的字符串序列相同就返回true。</p>
+<h2 id="String的实例方法"><a href="#String的实例方法" class="headerlink" title="String的实例方法"></a>String的实例方法</h2><p>1、求字符串长度<br>public int length()//返回该字符串的长度</p>
+<p>2、求字符串某一位置字符<br>public char charAt(int index)//返回字符串中指定位置的字符；注意字符串中第一个字符索引是0，最后一个是length()-1。</p>
+<p>3、提取子串<br>用String类的substring方法可以提取字符串中的子串，该方法有两种常用参数:<br>1)public String substring(int beginIndex)//该方法从beginIndex位置起，从当前字符串中取出剩余的字符作为一个新的字符串返回。<br>2)public String substring(int beginIndex, int endIndex)//该方法从beginIndex位置起，从当前字符串中取出到endIndex-1位置的字符作为一个新的字符串返回。</p>
+<p>4、字符串比较<br>1)public int compareTo(String anotherString)//该方法是对字符串内容按字典顺序进行大小比较，通过返回的整数值指明当前字符串与参数字符串的大小关系。若当前对象比参数大则返回正整数，反之返回负整数，相等返回0。<br>2)public int compareToIgnore(String anotherString)//与compareTo方法相似，但忽略大小写。<br>3)public boolean equals(Object anotherObject)//比较当前字符串和参数字符串，在两个字符串相等的时候返回true，否则返回false。<br>4)public boolean equalsIgnoreCase(String anotherString)//与equals方法相似，但忽略大小写。</p>
+<p>5、字符串连接<br>public String concat(String str)//将参数中的字符串str连接到当前字符串的后面，效果等价于”+”。</p>
+<p>6、字符串中单个字符查找<br>1)public int indexOf(int ch/String str)//用于查找当前字符串中字符或子串，返回字符或子串在当前字符串中从左边起首次出现的位置，若没有出现则返回-1。<br>2)public int indexOf(int ch/String str, int fromIndex)//改方法与第一种类似，区别在于该方法从fromIndex位置向后查找。<br>3)public int lastIndexOf(int ch/String str)//该方法与第一种类似，区别在于该方法从字符串的末尾位置向前查找。<br>4)public int lastIndexOf(int ch/String str, int fromIndex)//该方法与第二种方法类似，区别于该方法从fromIndex位置向前查找。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这一题的失误源于对String类的了解不够，注意String是不可变类，一旦实例化就不能被更改。</p>
 </div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/笔试采坑日记/">笔试采坑日记</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
