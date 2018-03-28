@@ -2,7 +2,7 @@
 <p>今天参加图聚智能的笔试，有一题问快排算法，时间复杂度等等，根本全忘了，自己果然很菜。今天复习一下及几种排序算法。</p>
 </blockquote>
 <p>先来个总结：</p>
-<p><img src="/2018/03/27/sort/图片.png”" alt=""></p>
+<p><img src="/2018/03/27/sort/图片.png" alt=""></p>
 <p>以下例子的通用代码</p>
 <p>交换位置：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(Comparable[] a, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">	    Comparable swap = a[i];</span><br><span class="line">	    a[i] = a[j];</span><br><span class="line">	    a[j] = swap;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
