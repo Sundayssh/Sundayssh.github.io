@@ -17,12 +17,20 @@
 <li>运行时间和输入无关，无论输入是已排序，时间复杂度都是O(n^2)</li>
 <li>数据移动最少，交换的次数和数组大小是线性关系</li>
 </ol>
-<h2 id="2-插入排序"><a href="#2-插入排序" class="headerlink" title="2 插入排序"></a>2 插入排序</h2><p>思路：</p>
+<h2 id="2-直接插入排序"><a href="#2-直接插入排序" class="headerlink" title="2 直接插入排序"></a>2 直接插入排序</h2><p>思路：</p>
 <blockquote>
 <p>在第i次迭代时，将第i个元素与左边每一个比它大的交换位置</p>
 </blockquote>
 <p>Java实现：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N = a.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt; <span class="number">0</span> &amp;&amp; less(a[j], a[j-<span class="number">1</span>]); j--) &#123;</span><br><span class="line">            exch(a, j, j-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>特点：</p>
+<ol>
+<li>运行时间和输入有关，当输入已排序时，时间复杂度是O(n);</li>
+<li>交换的次数等于输入中倒置(inversion)的个数</li>
+<li>插入排序适合部分有序数组，也适合小规模数组</li>
+</ol>
+<h2 id="3-希尔排序"><a href="#3-希尔排序" class="headerlink" title="3 希尔排序"></a>3 希尔排序</h2><p>希尔排序基于插入排序</p>
+<p>思路：</p>
 <blockquote>
+<p>选取一个增量d，一般是总个数的一半，每次减半<br>将距离为d的倍数的元素放到一组，对组内进行直接插入排序<br>减半增量，直到增量为1，完成排序</p>
 </blockquote>
 </div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/Java/">Java</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>

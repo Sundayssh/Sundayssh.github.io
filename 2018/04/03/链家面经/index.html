@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>链家面经 - I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0;"><header class="head"><h1 class="head-title u-fl"><a href="/">I'm Sunday</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-04-03T13:44:07.000Z">April 3, 2018</time><h1 class="post__title"><a href="/2018/04/03/链家面经/">链家面经</a></h1><div class="post__main echo"><blockquote>
+<p>废话不多说，今天面试又失败了，很多基础性的问题又没有回答上来</p>
+<h3 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h3><p>生命周期方法<br><img src="/2018/04/03/链家面经/image.png" alt=""></p>
+</blockquote>
+<p>onStart和onResume的区别是，虽然两个阶段都可见，但是onStart时，界面还没有获取焦点，onResume时，用户获取了焦点，onPause失去焦点，onPause和onStop的区别是onPause可见而onStop完全不可见，两者都失去了焦点，在经历了onStop方法后，如果再回到这个Activity，将会执行onRestart方法，onStart，onResume。</p>
+<h3 id="Activity的四种启动模式"><a href="#Activity的四种启动模式" class="headerlink" title="Activity的四种启动模式"></a>Activity的四种启动模式</h3><p>通过<activity>标签中的launchMode属性设定</activity></p>
+<ol>
+<li>standard<br>默认启动模式，每次激活Activity时都会创建Activity，并放入任务栈中，永远不会调用onNewIntent()。  </li>
+<li>singleTop<br>如果在任务的栈顶正好存在该Activity的实例， 就重用该实例，并调用其onNewIntent()，否者就会创建新的实例并放入栈顶(即使栈中已经存在该Activity实例，只要不在栈顶，都会创建实例，而不会调用onNewIntent()，此时就跟standard模式一样)。  </li>
+<li>singleTask<br>如果在栈中已经有该Activity的实例，就重用该实例(会调用实例的onNewIntent())。重用时，会让该例回到栈顶，因此在它上面的实例将会被移除栈。如果栈中不存在该实例，将会创建新的实例放入栈中（此时不会调用onNewIntent()）。   <ol>
+<li>singleInstance<br>在一个新栈中创建该Activity实例，并让多个应用共享改栈中的该Activity实例。一旦改模式的Activity的实例存在于某个栈中，任何应用再激活改Activity时都会重用该栈中的实例，其效果相当于多个应用程序共享一个应用，不管谁激活该Activity都会进入同一个应用中。  </li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>启动模式下各方法的调用情况</li>
+</ol>
+<p>singleInstance:<br>第一次进入：onCreate onStart<br>在栈顶再次进入： onNewIntent<br> 不在栈顶再次进入：onNewIntent onRestart onStart<br>按home键再次进入:onRestart onStart<br>按返回键：onRestart onStart</p>
+<p>standard:<br>第一次进入：onCreate onStart<br>在栈顶再次进入： onCreate onStart<br>不在栈顶再次进入：onCreate onStart<br>按home键再次进入:onRestart onStart<br>按返回键：onRestart onStart</p>
+<p>singleTop:<br>第一次进入：onCreate onStart<br>在栈顶再次进入：onNewIntent<br>不在栈顶再次进入：onCreate onStart<br>按home键再次进入:onRestart onStart<br>按返回键：onRestart onStart</p>
+<p>singleTask:<br>第一次进入：onCreate onStart<br>在栈顶再次进入：onNewIntent<br>不在栈顶再次进入：onNewIntent onRestart onStart<br>按home键再次进入:onRestart onStart<br>按返回键：onRestart onStart</p>
+<p><strong> 特别说明，当为一个Activity设置为singleInstance时，当从一个Activity跳转到这个Activity时，无论那个Activity在不在这个应用里，当按下home键，再打开该应用，显示的都是跳转到这个Activity之前的Activity，即调用者Activity </strong></p>
+<ol>
+<li>关于onNewIntent</li>
+</ol>
+<p>如果该Activity通过Intent启动，而且重用该Activity实例的时候，这个方法将会被调用，可以在这里对intent传进来的数据进行处理，重写onNewIntent方法。</p>
+<h3 id="在一个App启动另一个App中的Activity"><a href="#在一个App启动另一个App中的Activity" class="headerlink" title="在一个App启动另一个App中的Activity"></a>在一个App启动另一个App中的Activity</h3><p>第一种方法：完全可以用intent的隐式启动方式<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">intent.setAction(<span class="string">"bbb"</span>);</span><br><span class="line">intent.addCategory(<span class="string">"nnnn"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>第二种方法：intent.setClassName(app包名，包名.类名);<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intent.setClassName(<span class="string">"com.example.droodsunny.singleinatancetset"</span>,<span class="string">"com.example.droodsunny.singleinatancetset.MainActivity"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>第三种方法：ComponentName<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ComponentName componentName=<span class="keyword">new</span> ComponentName(<span class="string">"com.example.droodsunny.singleinatancetset"</span>,</span><br><span class="line"><span class="string">"com.example.droodsunny.singleinatancetset.MainActivity"</span>);</span><br><span class="line"> intent.setComponent(componentName);</span><br></pre></td></tr></table></figure></p>
+<p><strong> 如果启动一个APP的主界面不能用第一种方法 </strong></p>
+</div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/Android-面试/">Android 面试</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
