@@ -3,8 +3,7 @@
 <h3 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h3><p>生命周期方法<br><img src="/2018/04/03/链家面经/image.png" alt=""></p>
 </blockquote>
 <p>onStart和onResume的区别是，虽然两个阶段都可见，但是onStart时，界面还没有获取焦点，onResume时，用户获取了焦点，onPause失去焦点，onPause和onStop的区别是onPause可见而onStop完全不可见，两者都失去了焦点，在经历了onStop方法后，如果再回到这个Activity，将会执行onRestart方法，onStart，onResume。</p>
-<h3 id="Activity的四种启动模式"><a href="#Activity的四种启动模式" class="headerlink" title="Activity的四种启动模式"></a>Activity的四种启动模式</h3><p>通过<activity>标签中的launchMode属性设定</activity></p>
-<ol>
+<h3 id="Activity的四种启动模式"><a href="#Activity的四种启动模式" class="headerlink" title="Activity的四种启动模式"></a>Activity的四种启动模式</h3><h4 id="1-通过标签中的launchMode属性设定"><a href="#1-通过标签中的launchMode属性设定" class="headerlink" title="1 通过标签中的launchMode属性设定"></a>1 通过<activity>标签中的launchMode属性设定</activity></h4><ol>
 <li>standard<br>默认启动模式，每次激活Activity时都会创建Activity，并放入任务栈中，永远不会调用onNewIntent()。  </li>
 <li>singleTop<br>如果在任务的栈顶正好存在该Activity的实例， 就重用该实例，并调用其onNewIntent()，否者就会创建新的实例并放入栈顶(即使栈中已经存在该Activity实例，只要不在栈顶，都会创建实例，而不会调用onNewIntent()，此时就跟standard模式一样)。  </li>
 <li>singleTask<br>如果在栈中已经有该Activity的实例，就重用该实例(会调用实例的onNewIntent())。重用时，会让该例回到栈顶，因此在它上面的实例将会被移除栈。如果栈中不存在该实例，将会创建新的实例放入栈中（此时不会调用onNewIntent()）。   <ol>
@@ -19,13 +18,33 @@
 <p>standard:<br>第一次进入：onCreate onStart<br>在栈顶再次进入： onCreate onStart<br>不在栈顶再次进入：onCreate onStart<br>按home键再次进入:onRestart onStart<br>按返回键：onRestart onStart</p>
 <p>singleTop:<br>第一次进入：onCreate onStart<br>在栈顶再次进入：onNewIntent<br>不在栈顶再次进入：onCreate onStart<br>按home键再次进入:onRestart onStart<br>按返回键：onRestart onStart</p>
 <p>singleTask:<br>第一次进入：onCreate onStart<br>在栈顶再次进入：onNewIntent<br>不在栈顶再次进入：onNewIntent onRestart onStart<br>按home键再次进入:onRestart onStart<br>按返回键：onRestart onStart</p>
-<p><strong> 特别说明，当为一个Activity设置为singleInstance时，当从一个Activity跳转到这个Activity时，无论那个Activity在不在这个应用里，当按下home键，再打开该应用，显示的都是跳转到这个Activity之前的Activity，即调用者Activity </strong></p>
+<p><strong> 特别说明，当为一个Activity设置为singleInstance时，当从一个Activity跳转到这个Activity时，无论那个Activity在不在这个应用里，当按下home键，再打开该应用，显示的都是跳转到这个Activity之前的Activity，即调用者Activity。 只要设置了这个属性之后，该任务中就只有这一个Activity</strong></p>
 <ol>
-<li>关于onNewIntent</li>
+<li>关于onNewIntent<br>可以发现 onNewIntent 是在界面没有重新创建时调用的，从A跳过来的Intent依然保存着，onNewIntent 从字面意思来理解重新创建了一个Intent 来接收新的意图,可以在onNewIntent方法中重新设置Intent。<br>如果该Activity通过Intent启动，而且重用该Activity实例的时候，这个方法将会被调用，可以在这里对intent传进来的数据进行处理，重写onNewIntent方法。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onNewIntent</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onNewIntent(intent);</span><br><span class="line">        setIntent(intent);</span><br><span class="line">        Log.e(<span class="string">"BActivity"</span>,<span class="string">"onNewIntent"</span>+intent.getStringExtra(<span class="string">"cyy"</span>));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<p>如果该Activity通过Intent启动，而且重用该Activity实例的时候，这个方法将会被调用，可以在这里对intent传进来的数据进行处理，重写onNewIntent方法。</p>
 <h3 id="在一个App启动另一个App中的Activity"><a href="#在一个App启动另一个App中的Activity" class="headerlink" title="在一个App启动另一个App中的Activity"></a>在一个App启动另一个App中的Activity</h3><p>第一种方法：完全可以用intent的隐式启动方式<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">intent.setAction(<span class="string">"bbb"</span>);</span><br><span class="line">intent.addCategory(<span class="string">"nnnn"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>第二种方法：intent.setClassName(app包名，包名.类名);<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intent.setClassName(<span class="string">"com.example.droodsunny.singleinatancetset"</span>,<span class="string">"com.example.droodsunny.singleinatancetset.MainActivity"</span>);</span><br></pre></td></tr></table></figure></p>
 <p>第三种方法：ComponentName<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ComponentName componentName=<span class="keyword">new</span> ComponentName(<span class="string">"com.example.droodsunny.singleinatancetset"</span>,</span><br><span class="line"><span class="string">"com.example.droodsunny.singleinatancetset.MainActivity"</span>);</span><br><span class="line"> intent.setComponent(componentName);</span><br></pre></td></tr></table></figure></p>
 <p><strong> 如果启动一个APP的主界面不能用第一种方法 </strong></p>
+<h3 id="Activity的参数"><a href="#Activity的参数" class="headerlink" title="Activity的参数"></a>Activity的参数</h3><p>在<activity>元素中，有以下几个属性是可以使用的：</activity></p>
+<ol>
+<li>taskAffinity</li>
+<li>launchMode</li>
+<li>allowTaskReparenting</li>
+<li>clearTaskOnLaunch</li>
+<li>alwaysRetainTaskState</li>
+<li>finishOnTaskLaunch</li>
+</ol>
+<h4 id="taskAffinity"><a href="#taskAffinity" class="headerlink" title="taskAffinity"></a>taskAffinity</h4><blockquote>
+<p>taskAffinity可以显示的指定Activity所在的返回栈<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=<span class="string">".lancumode.BActivity"</span></span><br><span class="line">            android:launchMode=<span class="string">"singleTask"</span></span><br><span class="line">            android:taskAffinity=<span class="string">"wdwd.cyy"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>singleInstancez:即使不改变taskAffinity 也会改变takid<br>另外taskAffinity 可以与 android:allowTaskReparenting=”true”一起用。</p>
+<blockquote>
+<p>allowTaskReparenting用来标记Activity能否从启动的Task移动到taskAffinity指定的Task，默认是继承至application中的allowTaskReparenting=false，如果为true，则表示可以更换；false表示不可以。<br>当设置为true时，当一个Activity被另一个应用打开时，如果这个activity没有被销毁，那当打开这个Activity所在的应用时，就会立即显示该Activity，因为这个Activity和这个任务有相同的affinity值，而且退出的时候还会回到主Activity，如果在该任务中已经存在了该Activity实例了，那么打开这个APP之后这个Activity会在上一个Activity之上，也就是说不会重用那个实例。</p>
+</blockquote>
+<h4 id="清空返回栈"><a href="#清空返回栈" class="headerlink" title="清空返回栈"></a>清空返回栈</h4><p>如果用户将任务切换到后台之后过了很长一段时间，系统会将这个任务中除了最底层的那个Activity之外的其它所有Activity全部清除掉。当用户重新回到这个任务的时候，最底层的那个Activity将得到恢复。这个是系统默认的行为，因为既然过了这么长的一段时间，用户很有可能早就忘记了当时正在做什么，那么重新回到这个任务的时候，基本上应该是要去做点新的事情了。</p>
+<h4 id="alwaysRetainTaskState"><a href="#alwaysRetainTaskState" class="headerlink" title="alwaysRetainTaskState"></a>alwaysRetainTaskState</h4><p>如果将最底层的那个Activity的这个属性设置为true，那么上面所描述的默认行为就将不会发生，任务中所有的Activity即使过了很长一段时间之后仍然会被继续保留。</p>
+<h4 id="clearTaskOnLaunch"><a href="#clearTaskOnLaunch" class="headerlink" title="clearTaskOnLaunch"></a>clearTaskOnLaunch</h4><p>如果将最底层的那个Activity的这个属性设置为true，那么只要用户离开了当前任务，再次返回的时候就会将最底层Activity之上的所有其它Activity全部清除掉。简单来讲，就是一种和alwaysRetainTaskState完全相反的工作模式，它保证每次返回任务的时候都会是一种初始化状态，即使用户仅仅离开了很短的一段时间。</p>
+<h4 id="finishOnTaskLaunch"><a href="#finishOnTaskLaunch" class="headerlink" title="finishOnTaskLaunch"></a>finishOnTaskLaunch</h4><p>这个属性和clearTaskOnLaunch是比较类似的，不过它不是作用于整个任务上的，而是作用于单个Activity上。如果某个Activity将这个属性设置成true，那么用户一旦离开了当前任务，再次返回时这个Activity就会被清除掉。</p>
 </div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/Android-面试/">Android 面试</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
