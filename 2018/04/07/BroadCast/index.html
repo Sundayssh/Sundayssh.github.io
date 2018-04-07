@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>BroadCast - I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0;"><header class="head"><h1 class="head-title u-fl"><a href="/">I'm Sunday</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-04-07T04:19:16.000Z">April 7, 2018</time><h1 class="post__title"><a href="/2018/04/07/BroadCast/">BroadCast</a></h1><div class="post__main echo"><p>&gt;</p>
+<h3 id="广播两种注册方式的区别"><a href="#广播两种注册方式的区别" class="headerlink" title="广播两种注册方式的区别"></a>广播两种注册方式的区别</h3><p>今天介绍一下Android的四大组件之一的BroadCastReceiver，即广播。广播类似于JAVA设计模式中的观察者模式，即当被观察者数据变化的时候，会去通知观察者做相应处理。这里也是一样，当发出广播的时候，那么注册过该广播的人，就能收到这个广播，进而做一些工作。</p>
+<p>上面说的广播注册，在Android中有两种方式，即动态注册(代码注册)、静态注册(清单文件注册)，下面我以Android中网络状态变化发出的广播作为例子，看看这两种方式的具体用法。</p>
+<hr>
+<h4 id="动态注册：即用代码动态的注册、注销广播"><a href="#动态注册：即用代码动态的注册、注销广播" class="headerlink" title="动态注册：即用代码动态的注册、注销广播"></a>动态注册：即用代码动态的注册、注销广播</h4><p>registerReceiver<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicInternetActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> InternetDynamicBroadCastReceiver mReceiver;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_dynamic_lock_screen);</span><br><span class="line"></span><br><span class="line">        IntentFilter filter = <span class="keyword">new</span> IntentFilter();</span><br><span class="line">        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);</span><br><span class="line">        mReceiver = <span class="keyword">new</span> InternetDynamicBroadCastReceiver();</span><br><span class="line">        <span class="keyword">this</span>.registerReceiver(<span class="keyword">new</span> InternetDynamicBroadCastReceiver(), filter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        unregisterReceiver(mReceiver);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InternetDynamicBroadCastReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">            Toast.makeText(DynamicInternetActivity.<span class="keyword">this</span>,<span class="string">"网络发生了变化"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong> 注意：上面在onDestroy方法中，必须注销广播，否则有内存泄漏的风险！！！</strong></p>
+<h4 id="静态广播：把广播写死在manifest-xml中"><a href="#静态广播：把广播写死在manifest-xml中" class="headerlink" title="静态广播：把广播写死在manifest.xml中"></a>静态广播：把广播写死在manifest.xml中</h4><p>只需在广播接收器的清单文件里注册广播的接收事件<br>没有和特定的Activity绑定<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;intent-filter&gt;</span><br><span class="line">        &lt;!--&lt;action android:name=<span class="string">"ConnectivityManager.CONNECTIVITY_ACTION"</span>/&gt;<span class="comment">//这样写是不对的--&gt;</span></span><br><span class="line">        &lt;action android:name=<span class="string">"android.net.conn.CONNECTIVITY_CHANGE"</span>/&gt;<span class="comment">//此处必需指定action，否则监听不到</span></span><br><span class="line">    &lt;/intent-filter&gt;</span><br></pre></td></tr></table></figure></p>
+<p>然后重写广播接收器的onReceive方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InternetStaticBroadCastReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(context,<span class="string">"网络发生了变化"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h3><p>　动态注册的广播会受Activity的生命周期的影响， 当Activity销毁的时候，广播就失效了。<br>  静态注册不需要和特定的Activity绑定，即使程序没有启动也可以接收广播</p>
+<h4 id="特别注意"><a href="#特别注意" class="headerlink" title="特别注意"></a>特别注意</h4><ul>
+<li>动态广播最好在Activity 的 onResume()注册、onPause()注销</li>
+<li>对于动态广播，有注册就必然得有注销，否则会导致内存泄露</li>
+<li>重复注册、重复注销也不允许<blockquote>
+<p>不在onCreate() &amp; onDestory() 或 onStart() &amp; onStop()注册、注销是因为：<br>当系统因为内存不足要回收Activity占用的资源时，Activity在执行完onPause()方法后就会被销毁，有些生命周期方法onStop()，onDestory()就不会执行。当再回到此Activity时，是从onCreate方法开始执行。导致广播无法注销，重复注册，造成内存泄漏。</p>
+<h4 id="广播的类型"><a href="#广播的类型" class="headerlink" title="广播的类型"></a>广播的类型</h4><p>广播的类型主要分为5类：</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>普通广播（Normal Broadcast）</li>
+<li>系统广播（System Broadcast）</li>
+<li>有序广播（Ordered Broadcast）</li>
+<li>粘性广播（Sticky Broadcast）</li>
+<li>App应用内广播（Local Broadcast）</li>
+</ol>
+<h4 id="1-普通广播"><a href="#1-普通广播" class="headerlink" title="1 普通广播"></a>1 普通广播</h4><p>即 开发者自身定义 intent的广播（最常用）。发送广播使用如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line"><span class="comment">//对应BroadcastReceiver中intentFilter的action</span></span><br><span class="line">intent.setAction(BROADCAST_ACTION);</span><br><span class="line"><span class="comment">//发送广播</span></span><br><span class="line">sendBroadcast(intent);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>若被注册了的广播接收者中注册时intentFilter的action与上述匹配，则会接收此广播（即进行回调onReceive()）。<br><strong>若发送广播有相应权限，那么广播接收者也需要相应权限</strong></p>
+</blockquote>
+<h4 id="2-系统广播"><a href="#2-系统广播" class="headerlink" title="2 系统广播"></a>2 系统广播</h4><ul>
+<li>Android中内置了多个系统广播：只要涉及到手机的基本操作（如开机、网络状态变化、拍照等等），都会发出相应的广播</li>
+<li>每个广播都有特定的Intent - Filter（包括具体的action），Android系统广播action如下：<br>系统操作 | Action<br>| :-: | -:<br>监听网络变化|android.net.conn.CONNECTIVITY_CHANGE<br>关闭或打开飞行模式|Intent.ACTION_AIRPLANE_MODE_CHANGED<br>充电时或电量发生变化|Intent.ACTION_BATTERY_CHANGED<br>电池电量低|Intent.ACTION_BATTERY_LOW<br>电池电量充足（即从电量低变化到饱满时会发出广播|Intent.ACTION_BATTERY_OKAY<br>系统启动完成后(仅广播一次)|Intent.ACTION_BOOT_COMPLETED<br>按下照相时的拍照按键(硬件按键)时|Intent.ACTION_CAMERA_BUTTON<br>屏幕锁屏|ntent.ACTION_CLOSE_SYSTEM_DIALOGS<br>设备当前设置被改变时(界面语言、设备方向等)|Intent.ACTION_CONFIGURATION_CHANGED</li>
+</ul>
+<p>还有很多，就不一一列举了</p>
+<p><strong>当使用系统广播时，只需要在注册广播接收者时定义相关的action即可，并不需要手动发送广播，当系统有相关操作时会自动进行系统广播</strong></p>
+<h4 id="有序广播（Ordered-Broadcast）"><a href="#有序广播（Ordered-Broadcast）" class="headerlink" title="有序广播（Ordered Broadcast）"></a>有序广播（Ordered Broadcast）</h4><blockquote>
+<p>发送出去的广播被广播接收者按照先后顺序接收<br>有序是针对广播接收者而言的</p>
+</blockquote>
+<p>广播接受者接收广播的顺序规则（同时面向静态和动态注册的广播接受者）</p>
+<ol>
+<li>按照Priority属性值从大-小排序；</li>
+<li>Priority属性相同者，动态注册的广播优先；</li>
+</ol>
+<p>在广播接收器内指明优先级<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;intent-filter android:priority=<span class="string">"100"</span> &gt;</span><br></pre></td></tr></table></figure></p>
+<p>特点：</p>
+<ol>
+<li>接收广播按顺序接收</li>
+<li>先接收的广播接收者可以对广播进行截断，即后接收的广播接收者不再接收到此广播；</li>
+<li>先接收的广播接收者可以对广播进行修改，那么后接收的广播接收者将接收到被修改后的广播</li>
+</ol>
+<p>使用方式：<br>有序广播的使用过程与普通广播非常类似，差异仅在于广播的发送方式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sendOrderedBroadcast(intent);</span><br></pre></td></tr></table></figure></p>
+<p>截断广播只需要在广播接收器的onReceive()方法中写入abortBroadcast();就好了。</p>
+<h4 id="4-App应用内广播（Local-Broadcast）"><a href="#4-App应用内广播（Local-Broadcast）" class="headerlink" title="4 App应用内广播（Local Broadcast）"></a>4 App应用内广播（Local Broadcast）</h4><blockquote>
+<p>Android中的广播可以跨App直接通信（exported对于有intent-filter情况下默认值为true）</p>
+</blockquote>
+<p>可能出现的问题：</p>
+<ul>
+<li>其他App针对性发出与当前App intent-filter相匹配的广播，由此导致当前App不断接收广播并处理；</li>
+<li>其他App注册与当前App一致的intent-filter用于接收广播，获取广播具体信息；<br>即会出现安全性 &amp; 效率性的问题。</li>
+</ul>
+<p>解决办法：<br>使用App应用内广播（Local Broadcast）</p>
+<blockquote>
+<ol>
+<li>App应用内广播可理解为一种局部广播，广播的发送者和接收者都同属于一个App。<br></li>
+<li>相比于全局广播（普通广播），App应用内广播优势体现在：安全性高 &amp; 效率高</li>
+</ol>
+</blockquote>
+<p>使用方法：</p>
+<ul>
+<li>具体使用1 - 将全局广播设置成局部广播</li>
+</ul>
+<ol>
+<li>注册广播时将exported属性设置为false，使得非本App内部发出的此广播不被接收；</li>
+<li>在广播发送和接收时，增设相应权限permission，用于权限验证；</li>
+<li>发送广播时指定该广播接收器所在的包名，此广播将只会发送到此包中的App内与之相匹配的有效广播接收器中。</li>
+</ol>
+<blockquote>
+<p>通过intent.setPackage(packageName)指定报名</p>
+</blockquote>
+<ul>
+<li>具体使用2 - 使用封装好的LocalBroadcastManager类</li>
+</ul>
+<p>使用方式上与全局广播几乎相同，只是注册/取消注册广播接收器和发送广播时将参数的context变成了LocalBroadcastManager的单一实例<br><strong>注：对于LocalBroadcastManager方式发送的应用内广播，只能通过LocalBroadcastManager动态注册，不能静态注册</strong></p>
+<p>广播接收器的写法和普通广播一样<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注册应用内广播接收器</span></span><br><span class="line"><span class="comment">//步骤1：实例化BroadcastReceiver子类 &amp; IntentFilter mBroadcastReceiver </span></span><br><span class="line">mBroadcastReceiver = <span class="keyword">new</span> mBroadcastReceiver(); </span><br><span class="line">IntentFilter intentFilter = <span class="keyword">new</span> IntentFilter(); </span><br><span class="line"></span><br><span class="line"><span class="comment">//步骤2：实例化LocalBroadcastManager的实例</span></span><br><span class="line">localBroadcastManager = LocalBroadcastManager.getInstance(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//步骤3：设置接收广播的类型 </span></span><br><span class="line">intentFilter.addAction(android.net.conn.CONNECTIVITY_CHANGE);</span><br><span class="line"></span><br><span class="line"><span class="comment">//步骤4：调用LocalBroadcastManager单一实例的registerReceiver（）方法进行动态注册 </span></span><br><span class="line">localBroadcastManager.registerReceiver(mBroadcastReceiver, intentFilter);</span><br><span class="line"></span><br><span class="line"><span class="comment">//取消注册应用内广播接收器</span></span><br><span class="line">localBroadcastManager.unregisterReceiver(mBroadcastReceiver);</span><br><span class="line"></span><br><span class="line"><span class="comment">//发送应用内广播</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">intent.setAction(BROADCAST_ACTION);</span><br><span class="line">localBroadcastManager.sendBroadcast(intent);</span><br><span class="line"></span><br><span class="line">作者：Carson_Ho</span><br><span class="line">链接：https:<span class="comment">//www.jianshu.com/p/ca3d87a4cdf3</span></span><br><span class="line">來源：简书</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure></p>
+<h3 id="广播的生命周期"><a href="#广播的生命周期" class="headerlink" title="广播的生命周期"></a>广播的生命周期</h3><h4 id="广播接收器的生命周期"><a href="#广播接收器的生命周期" class="headerlink" title="广播接收器的生命周期"></a>广播接收器的生命周期</h4><p>当一个broadcast信息到达该receiver，Android调用它的onReceive()方法并将含有该广播信息的intent 对象传递它。Broadcast receiver仅仅在执行该方法时才被认为是活跃的。当onReceive()返回后，它又处于非活跃状态。也就是说，它的生命周期为从回调onReceive()方法开始到该方法返回结果后结束。</p>
+<p>广播接收器的生命周期只有十秒左右，如果在 onReceive() 内做超过十秒内的事情，就会报ANR(Application No Response) 程序无响应的错误信息。当该broadcast信息的响应很耗时时会存在问题，这时应该单独给他一个线程运行，而不是在其他组件所在的与用户交互的线程中。如果onReceive()生成该线程后返回，整个进程，包括那个新的线程，都被判断为非活跃的（除非该进程里的其他组件是活跃的），归入了可以被杀死的一类。解决该问题的答案是使用onReceive()开始一个service，让该service进行该处理，那样一来，系统就会知道该进程里仍有活跃的处理在进行。</p>
+<h4 id="广播发送者的生命周期"><a href="#广播发送者的生命周期" class="headerlink" title="广播发送者的生命周期"></a>广播发送者的生命周期</h4><p>发送的广播，只有在发送的那一个时刻有效。</p>
+</div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/Android-面试/">-Android -面试</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
