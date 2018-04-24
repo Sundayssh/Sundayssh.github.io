@@ -77,32 +77,6 @@
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th style="text-align:center">Academy</th>
-<th style="text-align:right">score </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Harry Potter</td>
-<td style="text-align:center">Gryffindor</td>
-<td style="text-align:right">90 </td>
-</tr>
-<tr>
-<td>Hermione Granger</td>
-<td style="text-align:center">Gryffindor</td>
-<td style="text-align:right">100 </td>
-</tr>
-<tr>
-<td>Draco Malfoy</td>
-<td style="text-align:center">Slytherin</td>
-<td style="text-align:right">90</td>
-</tr>
-</tbody>
-</table>
 <p>还有很多，就不一一列举了</p>
 <p><strong>当使用系统广播时，只需要在注册广播接收者时定义相关的action即可，并不需要手动发送广播，当系统有相关操作时会自动进行系统广播</strong></p>
 <h4 id="有序广播（Ordered-Broadcast）"><a href="#有序广播（Ordered-Broadcast）" class="headerlink" title="有序广播（Ordered Broadcast）"></a>有序广播（Ordered Broadcast）</h4><blockquote>
@@ -157,4 +131,12 @@
 <h3 id="广播的生命周期"><a href="#广播的生命周期" class="headerlink" title="广播的生命周期"></a>广播的生命周期</h3><h4 id="广播接收器的生命周期"><a href="#广播接收器的生命周期" class="headerlink" title="广播接收器的生命周期"></a>广播接收器的生命周期</h4><p>当一个broadcast信息到达该receiver，Android调用它的onReceive()方法并将含有该广播信息的intent 对象传递它。Broadcast receiver仅仅在执行该方法时才被认为是活跃的。当onReceive()返回后，它又处于非活跃状态。也就是说，它的生命周期为从回调onReceive()方法开始到该方法返回结果后结束。</p>
 <p>广播接收器的生命周期只有十秒左右，如果在 onReceive() 内做超过十秒内的事情，就会报ANR(Application No Response) 程序无响应的错误信息。当该broadcast信息的响应很耗时时会存在问题，这时应该单独给他一个线程运行，而不是在其他组件所在的与用户交互的线程中。如果onReceive()生成该线程后返回，整个进程，包括那个新的线程，都被判断为非活跃的（除非该进程里的其他组件是活跃的），归入了可以被杀死的一类。解决该问题的答案是使用onReceive()开始一个service，让该service进行该处理，那样一来，系统就会知道该进程里仍有活跃的处理在进行。</p>
 <h4 id="广播发送者的生命周期"><a href="#广播发送者的生命周期" class="headerlink" title="广播发送者的生命周期"></a>广播发送者的生命周期</h4><p>发送的广播，只有在发送的那一个时刻有效。</p>
+<h3 id="在onReceived方法中不能做任何耗时操作"><a href="#在onReceived方法中不能做任何耗时操作" class="headerlink" title="在onReceived方法中不能做任何耗时操作"></a>在onReceived方法中不能做任何耗时操作</h3><p>首先看静态注册的时候，onReceived怎么执行的：</p>
+<ol>
+<li>启动程序进程 </li>
+<li>启动ui线程和调用广播的 onReceive(Context context, Intent intent)方法 </li>
+<li>onReceive方法返回后，进程和线程处于等待状态；系统任意时刻可以终止和回收该线程和进程占有资源（内存）</li>
+</ol>
+<p>如果：在onReceive开启一个线程做任务，任务未做完系统有可能回收进程，做任务的线程就没有对应的进程上下文，会被回收，任务就有可能未完成。</p>
+<p>就是onReceived生命周期很短，如果开启线程的receiver没了，这些线程很容易就会被回收。</p>
 </div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/Android/">Android</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>

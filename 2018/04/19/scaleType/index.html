@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>scaleType - I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0;"><header class="head"><h1 class="head-title u-fl"><a href="/">I'm Sunday</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-04-19T13:57:51.000Z">April 19, 2018</time><h1 class="post__title"><a href="/2018/04/19/scaleType/">scaleType</a></h1><div class="post__main echo"><blockquote>
+<p>之前不懂给ImageView设置background和src有什么区别。<br><br>两者的主要区别就在于src支持各种缩放方式，而通过background指定没有。<br>从定义来讲，src表示前景，指图片的内容，background指的是背景。</p>
+</blockquote>
+<h3 id="background"><a href="#background" class="headerlink" title="background"></a>background</h3><p>通过background主要给view设置背景颜色或者是drawable，设置颜色的时候会填充整个view，设置drawable时要根据具体的drawable来定，当给ImageView设置background为图片时，主要有以下两种情况。</p>
+<ol>
+<li>当ImageView设置为wrap_content时</li>
+</ol>
+<p>ImageView的图片不会被拉伸，图片有多大，ImageView就有多大</p>
+<ol>
+<li>当ImageView设置为match_parent时</li>
+</ol>
+<p>ImageView的图片会在xy方向同时拉伸填充满整个ImageView</p>
+<h3 id="src"><a href="#src" class="headerlink" title="src"></a>src</h3><p>src特有的属性scaleType</p>
+<h4 id="详细的scaleType"><a href="#详细的scaleType" class="headerlink" title="详细的scaleType"></a>详细的scaleType</h4><ol>
+<li>android:scaleType=”center” </li>
+</ol>
+<p>保持原图的大小，显示在ImageView的中心。当原图的size大于ImageView的size，超过部分裁剪处理。</p>
+<ol>
+<li>android:scaleType=”centerCrop</li>
+</ol>
+<p>以填满整个ImageView为目的，将原图的中心对准ImageView的中心，等比例放大原图，直到填满ImageView为止（指的是ImageView的宽和高都要填满），原图超过ImageView的部分作裁剪处理。<br>即最短边与View相等，长边截掉。</p>
+<ol>
+<li>android:scaleType=”centerInside</li>
+</ol>
+<p>以原图完全显示为目的，将图片的内容完整居中显示，通过按比例缩小原图的size宽(高)等于或小于ImageView的宽(高)。如果原图的size本身就小于ImageView的size，则原图的size不作任何处理，居中显示在ImageView。即最长边与View相等</p>
+<ol>
+<li>android:scaleType=”matrix</li>
+</ol>
+<p>不改变原图的大小，从ImageView的左上角开始绘制原图，原图超过ImageView的部分作裁剪处理。</p>
+<ol>
+<li>android:scaleType=”fitCenter</li>
+</ol>
+<p>当视图View的大小比图片小时和centerInside相同，当视图View比图片大时，centerInside图片不会变化，而fitcenter会按比例填充屏幕</p>
+<ol>
+<li>android:scaleType=”fitEnd</li>
+</ol>
+<p>把原图按比例扩大或缩小到ImageView的ImageView的（最小高度），居尾显示。</p>
+<ol>
+<li>android:scaleType=”fitStart</li>
+</ol>
+<p>把原图按比例扩大(缩小)到ImageView的高度，显示在ImageView的上部分位置</p>
+<ol>
+<li>android:scaleType=”fitXY”</li>
+</ol>
+<p>把原图按照指定的大小在View中显示，拉伸显示图片，不保持原比例，填满ImageView.</p>
+</div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/Andrid/">Andrid</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
