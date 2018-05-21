@@ -1,1 +1,86 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>http - I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0;"><header class="head"><h1 class="head-title u-fl"><a href="/">I'm Sunday</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-05-18T12:32:42.000Z">May 18, 2018</time><h1 class="post__title"><a href="/2018/05/18/http/">http</a></h1><div class="post__main echo"></div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/网络/">网络</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>http - I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0;"><header class="head"><h1 class="head-title u-fl"><a href="/">I'm Sunday</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-05-18T12:32:42.000Z">May 18, 2018</time><h1 class="post__title"><a href="/2018/05/18/http/">http</a></h1><div class="post__main echo"><blockquote>
+<p>Http 中文全称：超文本传输协议</p>
+</blockquote>
+<p>HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个无状态的协议。</p>
+<p>HTTP模型：</p>
+<p><img src="http/http.png" alt=""></p>
+<p>HTTP默认的端口号为80，HTTPS的端口号为443。</p>
+<h3 id="GET和POST区别"><a href="#GET和POST区别" class="headerlink" title="GET和POST区别"></a>GET和POST区别</h3><p>GET主要是用来请求数据的，向特定的资源发出请求而POST主要用于提交数据</p>
+<p>GET也可以用来提交数据。GET方式提交数据，会带来安全问题，比如一个登录页面，通过GET方式提交数据时，用户名和密码将出现在URL上，如果页面可以被缓存或者其他人可以访问这台机器，就可以从历史记录获得该用户的账号和密码。</p>
+<p>GET提交的数据会放在URL之后，以?分割URL和传输数据，参数之间以&amp;相连，如EditPosts.aspx?name=test1&amp;id=123456. POST方法是把提交的数据放在HTTP包的Body中,即下图的请求数据中</p>
+<p>GET提交的数据大小有限制，最多只能有1024字节（因为浏览器对URL的长度有限制），而POST方法提交的数据没有限制。</p>
+<p>GET方式需要使用Request.QueryString来取得变量的值，而POST方式通过Request.Form来获取变量的值。</p>
+<h2 id="HTTP请求格式"><a href="#HTTP请求格式" class="headerlink" title="HTTP请求格式"></a>HTTP请求格式</h2><p>HTTP请求报文格式如下：</p>
+<p><img src="http/request.jpg" alt=""></p>
+<p>GET请求报文如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> GET /search?hl=zh-CN&amp;source=hp&amp;q=domety&amp;aq=f&amp;oq= HTTP/1.1  </span><br><span class="line">Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, </span><br><span class="line">application/msword, application/x-silverlight, application/x-shockwave-flash, */*  </span><br><span class="line">Referer: &lt;a href=&quot;http://www.google.cn/&quot;&gt;http://www.google.cn/&lt;/a&gt;  </span><br><span class="line">Accept-Language: zh-cn  </span><br><span class="line">Accept-Encoding: gzip, deflate  </span><br><span class="line">User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; TheWorld)  </span><br><span class="line">Host: &lt;a href=&quot;http://www.google.cn&quot;&gt;www.google.cn&lt;/a&gt;  </span><br><span class="line">Connection: Keep-Alive  </span><br><span class="line">Cookie: PREF=ID=80a06da87be9ae3c:U=f7167333e2c3b714:NW=1:TM=1261551909:LM=1261551917:S=ybYcq2wpfefs4V9g; </span><br><span class="line">NID=31=ojj8d-IygaEtSxLgaJmqSjVhCspkviJrB6omjamNrSm8lZhKy_yMfO2M4QMRKcH1g0iQv9u-2hfBW7bUFwVh7pGaRUb0RnHcJU37y-</span><br><span class="line">FxlRugatx63JLv7CWMD6UB_O_r</span><br></pre></td></tr></table></figure>
+<p>可以看到，GET方式的请求一般不包含”请求内容”部分，请求数据以地址的形式表现在请求行。<br>显然，这种方式不适合传送私密数据。另外，由于不同的浏览器对地址的字符限制也有所不同，一般最多只能识别1024个字符，所以如果需要传送大量数据的时候，也不适合使用GET方式。</p>
+<blockquote>
+<p>对于上面提到的不适合使用GET方式的情况，可以考虑使用POST方式，因为使用POST方法可以允许客户端给服务器提供信息较多。POST方法将请求参数封装在HTTP请求数据中，以名称/值的形式出现，可以传输大量数据，这样POST方式对传送的数据大小没有限制，而且也不会显示在URL中。</p>
+</blockquote>
+<p>Post请求报文格式：</p>
+<p><img src="http/Postrequest.jpg" alt=""></p>
+<p>可以看到，POST方式请求行中不包含数据字符串，这些数据保存在”请求内容”部分，各数据之间也是使用”&amp;”符号隔开。POST方式大多用于页面的表单中。因为POST也能完成GET的功能，因此多数人在设计表单的时候一律都使用POST方式，其实这是一个误区。GET方式也有自己的特点和优势，我们应该根据不同的情况来选择是使用GET还是使用POST。</p>
+<p>既然POST也能实现GET的功能，而且又有显著优势，GET的优势在哪呢？</p>
+<h1 id="GET和POST最全的区别"><a href="#GET和POST最全的区别" class="headerlink" title="GET和POST最全的区别"></a>GET和POST最全的区别</h1><ol>
+<li>post更安全（不会作为url的一部分，不会被缓存、保存在服务器日志、以及浏览器浏览记录中） </li>
+<li>post发送的数据更大（get有url长度限制）</li>
+<li>post能发送更多的数据类型（get只能发送ASCII字符）</li>
+<li>post用于修改和写入数据，get一般用于搜索排序和筛选之类的操作（淘宝，支付宝的搜索查询都是get提交），目的是资源的获取，读取数据 </li>
+<li>post比get慢 </li>
+</ol>
+<p><strong>为什么POST比GET慢？</strong></p>
+<ol>
+<li>post请求包含更多的请求头 ：因为post需要在请求的body部分包含数据，所以会多了几个数据描述部分的首部字段（如：content-type）,这其实是微乎其微的。</li>
+<li>最重要的一条，post在真正接收数据之前会先将请求头发送给服务器进行确认，然后才真正发送数据 </li>
+<li>get会将数据缓存起来，而post不会 </li>
+<li>post不能进行管道化传输 </li>
+</ol>
+<p>post请求的过程：</p>
+<ol>
+<li>浏览器请求tcp连接（第一次握手</li>
+<li>服务器答应进行tcp连接（第二次握手）</li>
+<li>浏览器确认，并发送post请求头（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）</li>
+<li>服务器返回100 Continue响应 </li>
+<li>浏览器发送数据 </li>
+<li>服务器返回200 OK响应 </li>
+</ol>
+<p>GET请求过程：</p>
+<ol>
+<li>浏览器请求tcp连接（第一次握手）</li>
+<li>服务器答应进行tcp连接（第二次握手）</li>
+<li>浏览器确认，并发送get请求头和数据（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）</li>
+<li>服务器返回200 OK响应</li>
+</ol>
+<h1 id="HTTP应用"><a href="#HTTP应用" class="headerlink" title="HTTP应用"></a>HTTP应用</h1><ol>
+<li>断点续传的实现原理</li>
+<li>多线程下载的原理</li>
+</ol>
+<p>都是因为GET请求的Range请求头可以规定请求的资源范围。</p>
+<h1 id="HTTPS传输协议原理"><a href="#HTTPS传输协议原理" class="headerlink" title="HTTPS传输协议原理"></a>HTTPS传输协议原理</h1><p>HTTPS（全称：Hypertext Transfer Protocolover Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容请看SSL。</p>
+<p><strong>两种基本的加解密算法类型</strong></p>
+<p>对称加密：密钥只有一个，加密解密为同一个密码，且加解密速度快，典型的对称加密算法有DES、AES等。</p>
+<p>非对称加密：密钥成对出现（且根据公钥无法推知私钥，根据私钥也无法推知公钥），加密解密使用不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称加密速度较慢，典型的非对称加密算法有RSA、DSA等。</p>
+<p><strong>HTTPS通信过程</strong></p>
+<p><img src="http/https.png" alt=""></p>
+<p><strong>HTTPS通信的优点</strong></p>
+<ol>
+<li>客户端产生的密钥只有客户端和服务器端能得到</li>
+<li>加密的数据只有客户端和服务器端才能得到明文</li>
+<li>客户端和服务端的通信是安全的</li>
+</ol>
+<h1 id="http的状态响应码"><a href="#http的状态响应码" class="headerlink" title="http的状态响应码"></a>http的状态响应码</h1><p><strong>1(信息类)：</strong>表示接收到请求并且继续处理</p>
+<p>100——客户必须继续发出请求</p>
+<p>101——客户要求服务器根据请求转换HTTP协议版本</p>
+<p><strong>2(响应成功)：</strong>表示动作被成功接收、理解和接受</p>
+<p>200——表明该请求被成功地完成，所请求的资源发送回客户端</p>
+<p>201——提示知道新文件的URL</p>
+<p>202——接受和处理、但处理未完成</p>
+<p><strong>3(重定向类)：</strong>为了完成指定的动作，必须接受进一步处理</p>
+<p>300——请求的资源可在多处得到</p>
+<p>301——本网页被永久性转移到另一个URL</p>
+<p><strong>4(客户端错误类)：</strong>请求包含错误语法或不能正确执行</p>
+<p>400——客户端请求有语法错误，不能被服务器所理解</p>
+<p>404——一个404错误表明可连接服务器，但服务器无法取得所请求的网页，请求资源不存在。eg：输入了错误的URL</p>
+<p><strong>5(服务端错误类)：</strong>服务器不能正确执行一个正确的请求</p>
+</div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/网络/">网络</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
