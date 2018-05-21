@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>I/O - I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0;"><header class="head"><h1 class="head-title u-fl"><a href="/">I'm Sunday</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-05-21T04:28:09.000Z">May 21, 2018</time><h1 class="post__title"><a href="/2018/05/21/I-O/">I/O</a></h1><div class="post__main echo"><p>java的I/O主要分为两大块</p>
+<ul>
+<li>输入流：InputStream和Reader</li>
+<li>输出流：OutputStream和Writer</li>
+</ul>
+<p>还可以分为</p>
+<ul>
+<li>字节流：InputStream和OutputStream</li>
+<li>字符流：Reader和Writer</li>
+</ul>
+<h1 id="字节流与字符流的区别"><a href="#字节流与字符流的区别" class="headerlink" title="字节流与字符流的区别"></a>字节流与字符流的区别</h1><p>实际上字节流在操作时本身不会用到缓冲区（内存），是文件本身直接操作的，而字符流在操作时使用了缓冲区，通过缓冲区再操作文件，如图:<br><img src="/2018/05/21/I-O/Model.jpg" alt=""></p>
+<p>如果进行文件操作时都不关闭输出流的话：</p>
+<ul>
+<li>字节流可以正确输出</li>
+<li>字符流无法输出</li>
+</ul>
+<p>因为字符流用到了缓冲区关闭输出流的话，会强行将缓冲区的内容输出。</p>
+<p>什么叫缓冲区？</p>
+<p>缓冲区可以简单的理解为一段内存区域。</p>
+<p><strong>作用：</strong>在某些情况下，如果一个程序频繁的操作一个资源（如文件或数据库），性能会很低，为了提高性能，就将一部分数据暂时读入到内存的一块区域内，以后直接从此区域读取数据即可，内存读取比较快，可以提高程序的性能。</p>
+<p>在字符流的操作中，所有的字符都是在形成的，在输出前会将所有的内容暂时保存在内存之中，所以使用了缓冲区暂存数据。这个缓冲区最大的作用，我觉得应该是字节和字符的转化。</p>
+<p>如果想在不关闭时也可以将字符流的内容全部输出，则可以使用Writer类中的flush()方法完成。</p>
+<p>InputStream，OutputStream,Reader,writer都是抽象类。所以不能直接new 。</p>
+<p>这两种流可以通过构造方法相互转化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">InputStream inputStream=socket.getInputStream();</span><br><span class="line">           <span class="comment">//将字节流转换为字符流</span></span><br><span class="line">           InputStreamReader inputStreamReader=<span class="keyword">new</span> InputStreamReader(inputStream);</span><br></pre></td></tr></table></figure>
+<p><strong>关于BufferedReader和BufferedInputStream</strong></p>
+<p>这种叫做缓冲输入流，默认有一个8kb的缓冲区，每次从缓冲区里读入数据，然后在从文件中读取8kb的数据放入缓冲区</p>
+<p>BufferedInputStream和InputStream效率问题</p>
+<p><a href="https://www.zhihu.com/question/29351698" target="_blank" rel="noopener">知乎回答</a></p>
+<blockquote>
+<p>我们的程序需要通过InputStream或Reader从数据源读取数据，然后用OutputStream或者Writer将数据写入到目标媒介中。其中，InputStream和Reader与数据源相关联，OutputStream和writer与目标媒介相关联。</p>
+</blockquote>
+<h1 id="IO类库"><a href="#IO类库" class="headerlink" title="IO类库"></a>IO类库</h1><p>上面我们介绍了Java IO中的四各类：InputStream、OutputStream、Reader、Writer，其实在我们的实际应用中，我们用到的一般是它们的子类，之所以设计这么多子类，目的就是让每一个类都负责不同的功能，以方便我们开发各种应用。各类用途汇总如下：</p>
+<ul>
+<li>文件访问</li>
+<li>网络访问</li>
+<li>内存缓存访问</li>
+<li>线程内部通信（管道）</li>
+<li>缓冲</li>
+<li>过滤</li>
+<li>解析</li>
+<li>读写文本（Readers/Writers）</li>
+<li>读写基本数据类型</li>
+<li>读写对象</li>
+</ul>
+<p>下面这张图总结了各部分的关系</p>
+<p><img src="/2018/05/21/I-O/io.png" alt=""></p>
+<h1 id="非阻塞IO"><a href="#非阻塞IO" class="headerlink" title="非阻塞IO"></a>非阻塞IO</h1><p><a href="https://www.jianshu.com/p/486b0965c296" target="_blank" rel="noopener">关于这个方面这篇文章写的很好</a></p>
+<p>IO请求的两个阶段：</p>
+<ol>
+<li>等待资源阶段：IO请求一般需要请求特殊的资源（如磁盘、RAM、文件），当资源被上一个使用者使用没有被释放时，IO请求就会被阻塞，直到能够使用这个资源。</li>
+<li>使用资源阶段：真正进行数据接收和发生。</li>
+</ol>
+<p>在等待资源阶段，IO分为阻塞IO和非阻塞IO</p>
+<ol>
+<li>阻塞IO： 资源不可用时，IO请求一直阻塞，直到反馈结果（有数据或超时）。</li>
+<li>非阻塞IO：资源不可用时，IO请求离开返回，返回数据标识资源不可用</li>
+</ol>
+<p>在使用资源阶段，IO分为同步IO和异步IO。</p>
+<ol>
+<li>同步IO：应用阻塞在发送或接收数据的状态，直到数据成功传输或返回失败。</li>
+<li>异步IO：应用发送或接收数据后立刻返回，数据写入OS缓存，由OS完成数据发送或接收，并返回成功或失败的信息给应用。</li>
+</ol>
+<p>非阻塞IO采用轮训方式查询资源是否可用</p>
+<h2 id="Java提供的-New-I-O"><a href="#Java提供的-New-I-O" class="headerlink" title="Java提供的 New I/O"></a>Java提供的 New I/O</h2><p>这套API有3个主要部分组成：缓冲区、通道、非阻塞I/O核心类</p>
+<h3 id="非阻塞I-O的缓冲区"><a href="#非阻塞I-O的缓冲区" class="headerlink" title="非阻塞I/O的缓冲区"></a>非阻塞I/O的缓冲区</h3><p>Java提供了7个基本的缓冲区，分别由7个类来管理：</p>
+<ul>
+<li>ByterBuffer</li>
+<li>ShortBuffer</li>
+<li>IntBuffer</li>
+<li>CharBuffer</li>
+<li>FloatBuffer</li>
+<li>DoubleBuffer</li>
+<li>LongBuffer</li>
+</ul>
+<p>它们都没有public构造方法，可以通过下面两种方法创建缓冲区：</p>
+<ol>
+<li>allocate 创建一个空的缓冲区</li>
+<li>wrap 创建一个存在数据的缓冲区</li>
+</ol>
+<h3 id="非阻塞IO读写数据"><a href="#非阻塞IO读写数据" class="headerlink" title="非阻塞IO读写数据"></a>非阻塞IO读写数据</h3><p>put和get</p>
+</div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/Java/">Java</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
