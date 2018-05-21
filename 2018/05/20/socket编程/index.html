@@ -1,4 +1,11 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>socket编程 - I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0;"><header class="head"><h1 class="head-title u-fl"><a href="/">I'm Sunday</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-05-20T07:59:01.000Z">May 20, 2018</time><h1 class="post__title"><a href="/2018/05/20/socket编程/">socket编程</a></h1><div class="post__main echo"><h1 id="关于端口号"><a href="#关于端口号" class="headerlink" title="关于端口号"></a>关于端口号</h1><p>端口号规定为16位，即允许一个IP主机有2的16次方65535个不同的端口。其中：</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>socket编程 - I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0;"><header class="head"><h1 class="head-title u-fl"><a href="/">I'm Sunday</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-05-20T07:59:01.000Z">May 20, 2018</time><h1 class="post__title"><a href="/2018/05/20/socket编程/">socket编程</a></h1><div class="post__main echo"><h1 id="网络ISO模型"><a href="#网络ISO模型" class="headerlink" title="网络ISO模型"></a>网络ISO模型</h1><ul>
+<li>应用层 Http</li>
+<li>传输层 TCP/UDP</li>
+<li>网络层 IP</li>
+<li>数据链路层</li>
+<li>物理层</li>
+</ul>
+<h1 id="关于端口号"><a href="#关于端口号" class="headerlink" title="关于端口号"></a>关于端口号</h1><p>端口号规定为16位，即允许一个IP主机有2的16次方65535个不同的端口。其中：</p>
 <ul>
 <li>0-1023 分配给系统的端口号</li>
 </ul>
@@ -18,6 +25,16 @@
 <h1 id="C-S模型"><a href="#C-S模型" class="headerlink" title="C/S模型"></a>C/S模型</h1><p>定义：即客户端/服务器结构，是软件系统体系结构</p>
 <p>如图：</p>
 <p><img src="/socket编程/csmodel.png" alt=""></p>
+<h1 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h1><blockquote>
+<p>特点：面向连接的，面向字节流，全双工，可靠。</p>
+</blockquote>
+<p>TCP建立连接需要三次握手,若A要与B建立连接</p>
+<ol>
+<li>第一次握手：建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认。即A发送信息给B</li>
+<li>第二次握手：服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认。即B收到连接信息后向A返回确认信息，B向A发送一个SYN和一个ACK确认</li>
+<li>第三次握手：客户端收到服务器的（SYN+ACK）报文段，并向服务器发送ACK报文段。即A收到确认信息后再次向B返回确认连接信息 </li>
+</ol>
+<p>如图：<br><img src="/socket编程/TCP.png" alt=""></p>
 <h1 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h1><p>创建一个客户端套接字，指定主机名和端口号，就可以自动连接服务器。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">          Socket socket=new Socket(&quot;域名&quot;,80);</span><br><span class="line">      &#125; catch (IOException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
 <p>isClosed返回是否关闭，isConnected返回是否连接过<br>只有isClosed返回false和isConnected返回true才能判断处于连接状态。</p>
