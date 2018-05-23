@@ -1,4 +1,108 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>链家面经 - I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0;"><header class="head"><h1 class="head-title u-fl"><a href="/">I'm Sunday</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-04-03T13:44:07.000Z">April 3, 2018</time><h1 class="post__title"><a href="/2018/04/03/链家面经/">链家面经</a></h1><div class="post__main echo"><blockquote>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>链家面经 | I&#39;m Sunday</title>
+  <meta name="author" content="Sunday">
+  
+  <meta name="description" content="废话不多说，今天面试又失败了，很多基础性的问题又没有回答上来，先写一下android方面的，再说Java方面的
+
+Android方面Activity的生命周期生命周期方法
+onStart和onResume的区别是，虽然两个阶段都可见，但是onStart时，界面还没有获取焦点，onResume时，用户">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="链家面经"/>
+  <meta property="og:site_name" content="I&#39;m Sunday"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="alternate" href="/atom.xml" title="I&#39;m Sunday" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <!-- wumiiVerification -->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!-- Font-Awesome -->
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+
+</head>
+
+<body>
+  <header id="header"><div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/img/default/avatar.png">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/">I&#39;m Sunday</a></h1>
+		    <h2><a href="/"></a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+		    		
+		    		  <a href="/"><i class="fa fa-home"></i>首页</a>
+		    		
+		    		  <a href="/archives"><i class="fa fa-archive"></i>归档</a>
+		    		
+		    		  <a href="/node"><i class="fa fa-book"></i>Node.js</a>
+		    		
+		    		  <a href="/hexo"><i class="fa fa-book"></i>电子书</a>
+		    		
+		</div>
+		<div id="sub-nav" class="alignright">
+		    
+		      <a href="/atom.xml"><i class="fa fa-rss"></i>订阅</a>
+		    
+		      <a href="/customization"><i class="fa fa-question-circle"></i>留言</a>
+		    
+		      <a href="/about"><i class="fa fa-user"></i>关于我</a>
+		    
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2018-04-03T13:44:07.000Z"><a href="/2018/04/03/链家面经/">2018-04-03</a></time>
+        
+  
+    <h1 class="title">链家面经</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        
+    <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android方面"><span class="toc-text"><a href="#Android&#x65B9;&#x9762;" class="headerlink" title="Android&#x65B9;&#x9762;"></a>Android&#x65B9;&#x9762;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity的生命周期"><span class="toc-text"><a href="#Activity&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="Activity&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"></a>Activity&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity的四种启动模式"><span class="toc-text"><a href="#Activity&#x7684;&#x56DB;&#x79CD;&#x542F;&#x52A8;&#x6A21;&#x5F0F;" class="headerlink" title="Activity&#x7684;&#x56DB;&#x79CD;&#x542F;&#x52A8;&#x6A21;&#x5F0F;"></a>Activity&#x7684;&#x56DB;&#x79CD;&#x542F;&#x52A8;&#x6A21;&#x5F0F;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-通过标签中的launchMode属性设定"><span class="toc-text"><a href="#1-&#x901A;&#x8FC7;&#x6807;&#x7B7E;&#x4E2D;&#x7684;launchMode&#x5C5E;&#x6027;&#x8BBE;&#x5B9A;" class="headerlink" title="1 &#x901A;&#x8FC7;&#x6807;&#x7B7E;&#x4E2D;&#x7684;launchMode&#x5C5E;&#x6027;&#x8BBE;&#x5B9A;"></a>1 &#x901A;&#x8FC7;<activity>&#x6807;&#x7B7E;&#x4E2D;&#x7684;launchMode&#x5C5E;&#x6027;&#x8BBE;&#x5B9A;</activity></span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在一个App启动另一个App中的Activity"><span class="toc-text"><a href="#&#x5728;&#x4E00;&#x4E2A;App&#x542F;&#x52A8;&#x53E6;&#x4E00;&#x4E2A;App&#x4E2D;&#x7684;Activity" class="headerlink" title="&#x5728;&#x4E00;&#x4E2A;App&#x542F;&#x52A8;&#x53E6;&#x4E00;&#x4E2A;App&#x4E2D;&#x7684;Activity"></a>&#x5728;&#x4E00;&#x4E2A;App&#x542F;&#x52A8;&#x53E6;&#x4E00;&#x4E2A;App&#x4E2D;&#x7684;Activity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Activity的参数"><span class="toc-text"><a href="#Activity&#x7684;&#x53C2;&#x6570;" class="headerlink" title="Activity&#x7684;&#x53C2;&#x6570;"></a>Activity&#x7684;&#x53C2;&#x6570;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#taskAffinity"><span class="toc-text"><a href="#taskAffinity" class="headerlink" title="taskAffinity"></a>taskAffinity</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#清空返回栈"><span class="toc-text"><a href="#&#x6E05;&#x7A7A;&#x8FD4;&#x56DE;&#x6808;" class="headerlink" title="&#x6E05;&#x7A7A;&#x8FD4;&#x56DE;&#x6808;"></a>&#x6E05;&#x7A7A;&#x8FD4;&#x56DE;&#x6808;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#alwaysRetainTaskState"><span class="toc-text"><a href="#alwaysRetainTaskState" class="headerlink" title="alwaysRetainTaskState"></a>alwaysRetainTaskState</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#clearTaskOnLaunch"><span class="toc-text"><a href="#clearTaskOnLaunch" class="headerlink" title="clearTaskOnLaunch"></a>clearTaskOnLaunch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#finishOnTaskLaunch"><span class="toc-text"><a href="#finishOnTaskLaunch" class="headerlink" title="finishOnTaskLaunch"></a>finishOnTaskLaunch</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Service"><span class="toc-text"><a href="#Service" class="headerlink" title="Service"></a>Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#触摸事件传递机制"><span class="toc-text"><a href="#&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x4F20;&#x9012;&#x673A;&#x5236;" class="headerlink" title="&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x4F20;&#x9012;&#x673A;&#x5236;"></a>&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x4F20;&#x9012;&#x673A;&#x5236;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HandlerThread"><span class="toc-text"><a href="#HandlerThread" class="headerlink" title="HandlerThread"></a>HandlerThread</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java方面"><span class="toc-text"><a href="#Java&#x65B9;&#x9762;" class="headerlink" title="Java&#x65B9;&#x9762;"></a>Java&#x65B9;&#x9762;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#谈一谈对ClassLoader的理解"><span class="toc-text"><a href="#&#x8C08;&#x4E00;&#x8C08;&#x5BF9;ClassLoader&#x7684;&#x7406;&#x89E3;" class="headerlink" title="&#x8C08;&#x4E00;&#x8C08;&#x5BF9;ClassLoader&#x7684;&#x7406;&#x89E3;"></a>&#x8C08;&#x4E00;&#x8C08;&#x5BF9;ClassLoader&#x7684;&#x7406;&#x89E3;</span></a></li></ol></li></ol>
+    </div>
+
+        <blockquote>
 <p>废话不多说，今天面试又失败了，很多基础性的问题又没有回答上来，先写一下android方面的，再说Java方面的</p>
 </blockquote>
 <h2 id="Android方面"><a href="#Android方面" class="headerlink" title="Android方面"></a>Android方面</h2><h3 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h3><p>生命周期方法<br><img src="/2018/04/03/链家面经/image.png" alt=""></p>
@@ -54,4 +158,130 @@
 <p><strong> 在Service里进行耗时操作是需要开启新线程的</strong></p>
 <h3 id="触摸事件传递机制"><a href="#触摸事件传递机制" class="headerlink" title="触摸事件传递机制"></a>触摸事件传递机制</h3><p>由于篇幅很长，所以在<a href="http://sshpro.space/2018/04/07/TouchEventDispatch/" target="_blank" rel="noopener">这篇文章</a>进行讲解。</p>
 <h3 id="HandlerThread"><a href="#HandlerThread" class="headerlink" title="HandlerThread"></a>HandlerThread</h3><p>由于篇幅很长，所以在<a href="http://sshpro.space/2018/04/07/HandlerThread/" target="_blank" rel="noopener">这篇文章</a>进行讲解。</p>
-<h2 id="Java方面"><a href="#Java方面" class="headerlink" title="Java方面"></a>Java方面</h2><h3 id="谈一谈对ClassLoader的理解"><a href="#谈一谈对ClassLoader的理解" class="headerlink" title="谈一谈对ClassLoader的理解"></a>谈一谈对ClassLoader的理解</h3></div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/Android/">Android</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
+<h2 id="Java方面"><a href="#Java方面" class="headerlink" title="Java方面"></a>Java方面</h2><h3 id="谈一谈对ClassLoader的理解"><a href="#谈一谈对ClassLoader的理解" class="headerlink" title="谈一谈对ClassLoader的理解"></a>谈一谈对ClassLoader的理解</h3>
+      
+    </div>
+    <footer>
+      
+        
+        
+  <div class="tags">
+    <a href="/tags/Android/">Android</a>
+  </div>
+
+        
+  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+<!-- 返回顶部 -->
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div></div></div>
+      <aside id="sidebar" class="alignright">
+        
+           
+
+        
+          <div class="widget tag">
+  <h3 class="title">微信公众账号</h3>
+    <ul class="entry">
+      <img src="/img/default/qrcode.jpg" alt="欢迎关注个人公众账号" style= "width: 100%">
+    </ul>
+</div>
+        
+          <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+        
+          
+  <div class="widget tag">
+    <h3 class="title">友情链接</h3>
+      <ul class="entry">
+        
+          <li class='link'><a href='http://xiaoyun.farbox.com'>晓晓博客</a></li>
+        
+          <li class='link'><a href='http://www.ituring.com.cn/users/136808'>图灵社区</a></li>
+        
+      </ul>
+  </div>
+
+
+        
+          
+  <div class="widget tag">
+    <h3 class="title">归档</h3>
+	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">公元 2018 年</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">公元 2017 年</a><span class="archive-list-count">11</span></li></ul>
+  </div>
+
+        
+      </aside>
+      <div class="clearfix"></div>
+    </div>
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2018 Sunday
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+
+  <div>
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<!-- calendar widget -->
+
+  <script src="/js/calendar.js"></script>
+  <script src="/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 百度统计 -->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?9acf0cedd48dc53be256ede5a98c2aaa";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+<!-- fancybox -->
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

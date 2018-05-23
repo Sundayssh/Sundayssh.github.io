@@ -1,1 +1,943 @@
-<!DOCTYPE html><html class="index" lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body>   <div class="hide" id="particles-oli-wrapper"></div><div class="index-wrapper"><header class="head index hide"><h1 class="head-title u-fl">I'm Sunday</h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header></div><script src="/js/particles.min.js"></script><script src="/js/particles.oli.js"></script></body></html>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>I&#39;m Sunday</title>
+  <meta name="author" content="Sunday">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="I&#39;m Sunday"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="alternate" href="/atom.xml" title="I&#39;m Sunday" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <!-- wumiiVerification -->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!-- Font-Awesome -->
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+
+</head>
+
+<body>
+  <header id="header"><div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/img/default/avatar.png">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/">I&#39;m Sunday</a></h1>
+		    <h2><a href="/"></a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+		    		
+		    		  <a href="/"><i class="fa fa-home"></i>首页</a>
+		    		
+		    		  <a href="/archives"><i class="fa fa-archive"></i>归档</a>
+		    		
+		    		  <a href="/node"><i class="fa fa-book"></i>Node.js</a>
+		    		
+		    		  <a href="/hexo"><i class="fa fa-book"></i>电子书</a>
+		    		
+		</div>
+		<div id="sub-nav" class="alignright">
+		    
+		      <a href="/atom.xml"><i class="fa fa-rss"></i>订阅</a>
+		    
+		      <a href="/customization"><i class="fa fa-question-circle"></i>留言</a>
+		    
+		      <a href="/about"><i class="fa fa-user"></i>关于我</a>
+		    
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper">
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2018-05-21T04:28:09.000Z"><a href="/2018/05/21/I-O/">2018-05-21</a></time>
+        
+  
+    <h1 class="title"><a href="/2018/05/21/I-O/">I/O</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        
+    <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#字节流与字符流的区别"><span class="toc-text"><a href="#&#x5B57;&#x8282;&#x6D41;&#x4E0E;&#x5B57;&#x7B26;&#x6D41;&#x7684;&#x533A;&#x522B;" class="headerlink" title="&#x5B57;&#x8282;&#x6D41;&#x4E0E;&#x5B57;&#x7B26;&#x6D41;&#x7684;&#x533A;&#x522B;"></a>&#x5B57;&#x8282;&#x6D41;&#x4E0E;&#x5B57;&#x7B26;&#x6D41;&#x7684;&#x533A;&#x522B;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IO类库"><span class="toc-text"><a href="#IO&#x7C7B;&#x5E93;" class="headerlink" title="IO&#x7C7B;&#x5E93;"></a>IO&#x7C7B;&#x5E93;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#非阻塞IO"><span class="toc-text"><a href="#&#x975E;&#x963B;&#x585E;IO" class="headerlink" title="&#x975E;&#x963B;&#x585E;IO"></a>&#x975E;&#x963B;&#x585E;IO</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java提供的-New-I-O"><span class="toc-text"><a href="#Java&#x63D0;&#x4F9B;&#x7684;-New-I-O" class="headerlink" title="Java&#x63D0;&#x4F9B;&#x7684; New I/O"></a>Java&#x63D0;&#x4F9B;&#x7684; New I/O</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#非阻塞I-O的缓冲区"><span class="toc-text"><a href="#&#x975E;&#x963B;&#x585E;I-O&#x7684;&#x7F13;&#x51B2;&#x533A;" class="headerlink" title="&#x975E;&#x963B;&#x585E;I/O&#x7684;&#x7F13;&#x51B2;&#x533A;"></a>&#x975E;&#x963B;&#x585E;I/O&#x7684;&#x7F13;&#x51B2;&#x533A;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非阻塞IO读写数据"><span class="toc-text"><a href="#&#x975E;&#x963B;&#x585E;IO&#x8BFB;&#x5199;&#x6570;&#x636E;" class="headerlink" title="&#x975E;&#x963B;&#x585E;IO&#x8BFB;&#x5199;&#x6570;&#x636E;"></a>&#x975E;&#x963B;&#x585E;IO&#x8BFB;&#x5199;&#x6570;&#x636E;</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+        <p>java的I/O主要分为两大块</p>
+<ul>
+<li>输入流：InputStream和Reader</li>
+<li>输出流：OutputStream和Writer</li>
+</ul>
+<p>还可以分为</p>
+<ul>
+<li>字节流：InputStream和OutputStream</li>
+<li>字符流：Reader和Writer</li>
+</ul>
+<h1 id="字节流与字符流的区别"><a href="#字节流与字符流的区别" class="headerlink" title="字节流与字符流的区别"></a>字节流与字符流的区别</h1><p>实际上字节流在操作时本身不会用到缓冲区（内存），是文件本身直接操作的，而字符流在操作时使用了缓冲区，通过缓冲区再操作文件，如图:</p>
+<p><img src="/2018/05/21/I-O/Model.jpg" alt=""></p>
+<p>如果进行文件操作时都不关闭输出流的话：</p>
+<ul>
+<li>字节流可以正确输出</li>
+<li>字符流无法输出</li>
+</ul>
+<p>因为字符流用到了缓冲区关闭输出流的话，会强行将缓冲区的内容输出。</p>
+<p>什么叫缓冲区？</p>
+<p>缓冲区可以简单的理解为一段内存区域。</p>
+<p><strong>作用：</strong>在某些情况下，如果一个程序频繁的操作一个资源（如文件或数据库），性能会很低，为了提高性能，就将一部分数据暂时读入到内存的一块区域内，以后直接从此区域读取数据即可，内存读取比较快，可以提高程序的性能。</p>
+<p>在字符流的操作中，所有的字符都是在形成的，在输出前会将所有的内容暂时保存在内存之中，所以使用了缓冲区暂存数据。这个缓冲区最大的作用，我觉得应该是字节和字符的转化。</p>
+<p>如果想在不关闭时也可以将字符流的内容全部输出，则可以使用Writer类中的flush()方法完成。</p>
+<p>InputStream，OutputStream,Reader,writer都是抽象类。所以不能直接new 。</p>
+<p>这两种流可以通过构造方法相互转化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">InputStream inputStream=socket.getInputStream();</span><br><span class="line">           <span class="comment">//将字节流转换为字符流</span></span><br><span class="line">           InputStreamReader inputStreamReader=<span class="keyword">new</span> InputStreamReader(inputStream);</span><br></pre></td></tr></table></figure>
+<p><strong>关于BufferedReader和BufferedInputStream</strong></p>
+<p>这种叫做缓冲输入流，默认有一个8kb的缓冲区，每次从缓冲区里读入数据，然后在从文件中读取8kb的数据放入缓冲区</p>
+<p>BufferedInputStream和InputStream效率问题</p>
+<p><a href="https://www.zhihu.com/question/29351698" target="_blank" rel="noopener">知乎回答</a></p>
+<blockquote>
+<p>我们的程序需要通过InputStream或Reader从数据源读取数据，然后用OutputStream或者Writer将数据写入到目标媒介中。其中，InputStream和Reader与数据源相关联，OutputStream和writer与目标媒介相关联。</p>
+</blockquote>
+<h1 id="IO类库"><a href="#IO类库" class="headerlink" title="IO类库"></a>IO类库</h1><p>上面我们介绍了Java IO中的四各类：InputStream、OutputStream、Reader、Writer，其实在我们的实际应用中，我们用到的一般是它们的子类，之所以设计这么多子类，目的就是让每一个类都负责不同的功能，以方便我们开发各种应用。各类用途汇总如下：</p>
+<ul>
+<li>文件访问</li>
+<li>网络访问</li>
+<li>内存缓存访问</li>
+<li>线程内部通信（管道）</li>
+<li>缓冲</li>
+<li>过滤</li>
+<li>解析</li>
+<li>读写文本（Readers/Writers）</li>
+<li>读写基本数据类型</li>
+<li>读写对象</li>
+</ul>
+<p>下面这张图总结了各部分的关系</p>
+<p><img src="/2018/05/21/I-O/io.png" alt=""></p>
+<h1 id="非阻塞IO"><a href="#非阻塞IO" class="headerlink" title="非阻塞IO"></a>非阻塞IO</h1><p><a href="https://www.jianshu.com/p/486b0965c296" target="_blank" rel="noopener">关于这个方面这篇文章写的很好</a></p>
+<p>IO请求的两个阶段：</p>
+<ol>
+<li>等待资源阶段：IO请求一般需要请求特殊的资源（如磁盘、RAM、文件），当资源被上一个使用者使用没有被释放时，IO请求就会被阻塞，直到能够使用这个资源。</li>
+<li>使用资源阶段：真正进行数据接收和发生。</li>
+</ol>
+<p>在等待资源阶段，IO分为阻塞IO和非阻塞IO</p>
+<ol>
+<li>阻塞IO： 资源不可用时，IO请求一直阻塞，直到反馈结果（有数据或超时）。</li>
+<li>非阻塞IO：资源不可用时，IO请求离开返回，返回数据标识资源不可用</li>
+</ol>
+<p>在使用资源阶段，IO分为同步IO和异步IO。</p>
+<ol>
+<li>同步IO：应用阻塞在发送或接收数据的状态，直到数据成功传输或返回失败。</li>
+<li>异步IO：应用发送或接收数据后立刻返回，数据写入OS缓存，由OS完成数据发送或接收，并返回成功或失败的信息给应用。</li>
+</ol>
+<p>非阻塞IO采用轮训方式查询资源是否可用</p>
+<h2 id="Java提供的-New-I-O"><a href="#Java提供的-New-I-O" class="headerlink" title="Java提供的 New I/O"></a>Java提供的 New I/O</h2><p>这套API有3个主要部分组成：缓冲区、通道、非阻塞I/O核心类</p>
+<h3 id="非阻塞I-O的缓冲区"><a href="#非阻塞I-O的缓冲区" class="headerlink" title="非阻塞I/O的缓冲区"></a>非阻塞I/O的缓冲区</h3><p>Java提供了7个基本的缓冲区，分别由7个类来管理：</p>
+<ul>
+<li>ByterBuffer</li>
+<li>ShortBuffer</li>
+<li>IntBuffer</li>
+<li>CharBuffer</li>
+<li>FloatBuffer</li>
+<li>DoubleBuffer</li>
+<li>LongBuffer</li>
+</ul>
+<p>它们都没有public构造方法，可以通过下面两种方法创建缓冲区：</p>
+<ol>
+<li>allocate 创建一个空的缓冲区</li>
+<li>wrap 创建一个存在数据的缓冲区</li>
+</ol>
+<h3 id="非阻塞IO读写数据"><a href="#非阻塞IO读写数据" class="headerlink" title="非阻塞IO读写数据"></a>非阻塞IO读写数据</h3><p>put和get</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+<!-- 返回顶部 -->
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2018-05-20T07:59:01.000Z"><a href="/2018/05/20/socket编程/">2018-05-20</a></time>
+        
+  
+    <h1 class="title"><a href="/2018/05/20/socket编程/">socket编程</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        
+    <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#网络ISO模型"><span class="toc-text"><a href="#&#x7F51;&#x7EDC;ISO&#x6A21;&#x578B;" class="headerlink" title="&#x7F51;&#x7EDC;ISO&#x6A21;&#x578B;"></a>&#x7F51;&#x7EDC;ISO&#x6A21;&#x578B;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于端口号"><span class="toc-text"><a href="#&#x5173;&#x4E8E;&#x7AEF;&#x53E3;&#x53F7;" class="headerlink" title="&#x5173;&#x4E8E;&#x7AEF;&#x53E3;&#x53F7;"></a>&#x5173;&#x4E8E;&#x7AEF;&#x53E3;&#x53F7;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C-S模型"><span class="toc-text"><a href="#C-S&#x6A21;&#x578B;" class="headerlink" title="C/S&#x6A21;&#x578B;"></a>C/S&#x6A21;&#x578B;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP协议"><span class="toc-text"><a href="#TCP&#x534F;&#x8BAE;" class="headerlink" title="TCP&#x534F;&#x8BAE;"></a>TCP&#x534F;&#x8BAE;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#socket类型"><span class="toc-text"><a href="#socket&#x7C7B;&#x578B;" class="headerlink" title="socket&#x7C7B;&#x578B;"></a>socket&#x7C7B;&#x578B;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#客户端"><span class="toc-text"><a href="#&#x5BA2;&#x6237;&#x7AEF;" class="headerlink" title="&#x5BA2;&#x6237;&#x7AEF;"></a>&#x5BA2;&#x6237;&#x7AEF;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#读取Server发来的数据"><span class="toc-text"><a href="#&#x8BFB;&#x53D6;Server&#x53D1;&#x6765;&#x7684;&#x6570;&#x636E;" class="headerlink" title="&#x8BFB;&#x53D6;Server&#x53D1;&#x6765;&#x7684;&#x6570;&#x636E;"></a>&#x8BFB;&#x53D6;Server&#x53D1;&#x6765;&#x7684;&#x6570;&#x636E;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发送数据到Server"><span class="toc-text"><a href="#&#x53D1;&#x9001;&#x6570;&#x636E;&#x5230;Server" class="headerlink" title="&#x53D1;&#x9001;&#x6570;&#x636E;&#x5230;Server"></a>&#x53D1;&#x9001;&#x6570;&#x636E;&#x5230;Server</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#服务端"><span class="toc-text"><a href="#&#x670D;&#x52A1;&#x7AEF;" class="headerlink" title="&#x670D;&#x52A1;&#x7AEF;"></a>&#x670D;&#x52A1;&#x7AEF;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#accept方法"><span class="toc-text"><a href="#accept&#x65B9;&#x6CD5;" class="headerlink" title="accept&#x65B9;&#x6CD5;"></a>accept&#x65B9;&#x6CD5;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于阻塞"><span class="toc-text"><a href="#&#x5173;&#x4E8E;&#x963B;&#x585E;" class="headerlink" title="&#x5173;&#x4E8E;&#x963B;&#x585E;"></a>&#x5173;&#x4E8E;&#x963B;&#x585E;</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基于UDP的Socket"><span class="toc-text"><a href="#&#x57FA;&#x4E8E;UDP&#x7684;Socket" class="headerlink" title="&#x57FA;&#x4E8E;UDP&#x7684;Socket"></a>&#x57FA;&#x4E8E;UDP&#x7684;Socket</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</span></a></li></ol>
+    </div>
+
+        <h1 id="网络ISO模型"><a href="#网络ISO模型" class="headerlink" title="网络ISO模型"></a>网络ISO模型</h1><ul>
+<li>应用层 Http</li>
+<li>传输层 TCP/UDP</li>
+<li>网络层 IP</li>
+<li>数据链路层</li>
+<li>物理层</li>
+</ul>
+<h1 id="关于端口号"><a href="#关于端口号" class="headerlink" title="关于端口号"></a>关于端口号</h1><p>端口号规定为16位，即允许一个IP主机有2的16次方65535个不同的端口。其中：</p>
+<ul>
+<li>0-1023 分配给系统的端口号</li>
+</ul>
+<blockquote>
+<p>我们不可以乱用</p>
+</blockquote>
+<ul>
+<li>1024~49151：登记端口号，主要是让第三方应用使用</li>
+</ul>
+<blockquote>
+<p>但是必须在IANA（互联网数字分配机构）按照规定手续登记</p>
+</blockquote>
+<ul>
+<li>49152~65535：短暂端口号，是留给客户进程选择暂时使用，一个进程使用完就可以供其他进程使用</li>
+</ul>
+<p><strong>自定义的服务端套接字可以使用1024-65535端口</strong></p>
+<h1 id="C-S模型"><a href="#C-S模型" class="headerlink" title="C/S模型"></a>C/S模型</h1><p>定义：即客户端/服务器结构，是软件系统体系结构</p>
+<p>如图：</p>
+<p><img src="/2018/05/20/socket编程/csmodel.png" alt=""></p>
+<h1 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h1><blockquote>
+<p>特点：面向连接的，面向字节流，全双工，可靠。</p>
+</blockquote>
+<p>TCP建立连接需要三次握手,若A要与B建立连接</p>
+<ol>
+<li>第一次握手：建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认。即A发送信息给B</li>
+<li>第二次握手：服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认。即B收到连接信息后向A返回确认信息，B向A发送一个SYN和一个ACK确认</li>
+<li>第三次握手：客户端收到服务器的（SYN+ACK）报文段，并向服务器发送ACK报文段。即A收到确认信息后再次向B返回确认连接信息 </li>
+</ol>
+<p>如图：<br><img src="/2018/05/20/socket编程/TCP.png" alt=""></p>
+<p>有人说了，为什么要采取三次握手这种机制呢？我们假设下面一种情况：</p>
+<ol>
+<li>Client向Server发送了连接请求，但由于网络阻塞等原因，当Server接收到这个请求时，该报文段已失效</li>
+<li>这是Server就会向Client发送确认报文，同意建立连接，变为连接状态</li>
+<li>但此时的Client并没有建立连接的请求，所以不会向Server发送请求数据</li>
+<li>这个Server就浪费了。</li>
+</ol>
+<p>TCP释放连接 四次挥手</p>
+<h1 id="socket类型"><a href="#socket类型" class="headerlink" title="socket类型"></a>socket类型</h1><p>定义：是一个对 TCP / IP协议进行封装 的编程调用接口（API），属于传输层（主要解决数据如何在网络中传输）</p>
+<p>成对出现，Client和Server</p>
+<p>类型：</p>
+<ol>
+<li>流套接字（streamsocket） ：基于 TCP协议，采用 流的方式 提供可靠的字节流服务</li>
+<li>数据报套接字(datagramsocket)：基于 UDP协议，采用 数据报文 提供数据打包发送的服务</li>
+</ol>
+<h1 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h1><p>创建一个客户端套接字，指定主机名和端口号，就可以自动连接服务器。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">          Socket socket=<span class="keyword">new</span> Socket(<span class="string">"域名"</span>,<span class="number">80</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<p>isClosed返回是否关闭，isConnected返回是否连接过<br>只有isClosed返回false和isConnected返回true才能判断处于连接状态。</p>
+<p>创建一个套接字，调用connect方法连接服务器,可以设置连接超时时间</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Socket socket=<span class="keyword">new</span> Socket();</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          socket.connect(<span class="keyword">new</span> InetSocketAddress(<span class="string">"域名"</span>,<span class="number">80</span>),<span class="number">2000</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<p>超时分为连接超时和读取超时</p>
+<p>通过Socket.setSoTimeout()设置读取超时时间，只能在读取数据之前调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">socket.getInetAddress().getHostAddress();<span class="comment">//得到服务器的IP</span></span><br><span class="line">socket.getInetAddress().getHostName();<span class="comment">//得到服务器域名</span></span><br><span class="line">socket.getPort();<span class="comment">//得到主机端口号</span></span><br></pre></td></tr></table></figure>
+<p>设置socket关闭的延时<br>Socket.setSoLinger(true,30)</p>
+<p>单位是秒</p>
+<h2 id="读取Server发来的数据"><a href="#读取Server发来的数据" class="headerlink" title="读取Server发来的数据"></a>读取Server发来的数据</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//创建输入流对象，得到服务端传来的数据</span></span><br><span class="line">            InputStream inputStream=socket.getInputStream();</span><br><span class="line">            <span class="comment">//将字节流转换为字符流</span></span><br><span class="line">            InputStreamReader inputStreamReader=<span class="keyword">new</span> InputStreamReader(inputStream);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            BufferedReader bufferedReader=<span class="keyword">new</span> BufferedReader(inputStreamReader);</span><br><span class="line">           String b;</span><br><span class="line">           <span class="comment">//按行读取</span></span><br><span class="line">         <span class="keyword">while</span> (!(b=bufferedReader.readLine()).equals(<span class="string">""</span>))&#123;</span><br><span class="line">               Log.d(<span class="string">"kkk"</span>,b);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="发送数据到Server"><a href="#发送数据到Server" class="headerlink" title="发送数据到Server"></a>发送数据到Server</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//字节流</span></span><br><span class="line">            OutputStream outputStream=socket.getOutputStream();</span><br><span class="line">            outputStream.write((<span class="string">"hhh"</span>).getBytes(<span class="string">"utf-8"</span>));</span><br><span class="line">            <span class="comment">//发送数据</span></span><br><span class="line">            outputStream.flush();</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h1><p>服务端套接字的创建：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">            ServerSocket serverSocket=<span class="keyword">new</span> ServerSocket(<span class="number">1024</span>);</span><br><span class="line">            <span class="comment">//一般都会开启一个线程来处理连接清秋</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">                Socket socket=serverSocket.accept();<span class="comment">//等待连接请求,阻塞式的</span></span><br><span class="line">                <span class="comment">//如果在这进行了耗时操作</span></span><br><span class="line">                excute(socket);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>在excute方法内开辟了一个线程池，每当由套接字连接时，就放入线程池中进行处理。</p>
+<p>excute具体的实现:</p>
+<p>1.线程池的实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CPU_COUNT=Runtime.getRuntime().availableProcessors();<span class="comment">//得到cpu核心数</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CORE_POOL_SIZE=CPU_COUNT+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_POOL_SIZE=<span class="number">2</span>*CPU_COUNT+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> KEEP_ALOVE=<span class="number">10L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadFactory threadfactory=<span class="keyword">new</span> ThreadFactory() &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> AtomicInteger atomicInteger=<span class="keyword">new</span> AtomicInteger(<span class="number">1</span>);</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Thread <span class="title">newThread</span><span class="params">(@NonNull Runnable r)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Thread(r,atomicInteger.getAndIncrement()+<span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Executor THREAD_POOL_EXECUTER=<span class="keyword">new</span> ThreadPoolExecutor(CORE_POOL_SIZE,MAXIMUM_POOL_SIZE,KEEP_ALOVE, TimeUnit.SECONDS,</span><br><span class="line">            <span class="keyword">new</span> LinkedBlockingDeque&lt;Runnable&gt;(),threadfactory);</span><br></pre></td></tr></table></figure>
+<p>2.将Runnable放入线程池：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">excute</span><span class="params">(Socket socket)</span></span>&#123;</span><br><span class="line">    Runnable client=<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="comment">//对该socket进行处理</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//放进线程池</span></span><br><span class="line">    THREAD_POOL_EXECUTER.execute(client);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="accept方法"><a href="#accept方法" class="headerlink" title="accept方法"></a>accept方法</h2><p>accept返回一个已连接的套接字</p>
+<p>每个服务端套接字都有一个请求队列，<br>可以在ServerSocket的构造函数中指定</p>
+<p>new ServerSocket(1024,100)</p>
+<p>当有客户端连接时，将会首先放到连接队列中，accept就会从这个连接队列中取出一个没有处理的客户端套接字，<br>如果连接队列为空，就会阻塞在accept。</p>
+<p>如果一台服务器有多个网卡，可以实例化一个绑定某个网卡的服务端Socket</p>
+<p>new ServerSocket(1234,0,InetAddress.getByName(“192.168.18.10”));</p>
+<h2 id="关于阻塞"><a href="#关于阻塞" class="headerlink" title="关于阻塞"></a>关于阻塞</h2><p>网络通信中有两个地方可能会被阻塞</p>
+<ol>
+<li>在调用connect 和accept 方法的时候可能会阻塞</li>
+<li>在读写数据时可能被阻塞</li>
+</ol>
+<p>关于I/O的阻塞，在另外一篇文章分析。</p>
+<h1 id="基于UDP的Socket"><a href="#基于UDP的Socket" class="headerlink" title="基于UDP的Socket"></a>基于UDP的Socket</h1><p><a href="https://blog.csdn.net/qq_15784961/article/details/53927365" target="_blank" rel="noopener">看这篇文章</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>关于Socket先说这么多。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+<!-- 返回顶部 -->
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2018-05-20T05:51:26.000Z"><a href="/2018/05/20/520有话想对你说/">2018-05-20</a></time>
+        
+  
+    <h1 class="title"><a href="/2018/05/20/520有话想对你说/">520有话想对你说</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        
+    <div id="toc">
+        
+    </div>
+
+        <p><strong>说起来今天也不是什么节日，就是想写点东西给自己看，想轻轻的读给你听。</strong></p>
+<p>开头当然少不了我对自己的吹嘘。我庆幸我自己的坚持，更庆幸我们之间的缘分。</p>
+<p>我们在一起快100天了，是啊，怎么才一百天，我认识你足足有八年了，你认识我也有六年了。我暗暗的喜欢了你七年，就在年初，我得手了，哈哈哈，开心的要命，这辈子从来没有这么开心过。我原以为“七年之痒”形容的是经历了七年的相思，有情人终成眷属，可是百度又一次让我认识到了自己的无知。不管原意是什么，我就想表达这个意思。</p>
+<p>就像我之前对你说的，这七年来迷茫过，绝望过，想着就不要打扰你了，觉得自己太傻了，而且感觉那时候说出来很不好，我们可能会处理不好而错过彼此，而且那么多年的异地，应该不是每个人都能坚持下来的。之前看过很多人说，异地最不好的就是不能很好的理解手机那头的彼此现在的感情，只能看到冷冰冰的文字，只有靠自己的想象强加上温度。所以一点小矛盾，小误会，就容易崩盘。比如有时候，我会惹你不高兴，我相信如果我在你身边，肯定不会惹你不高兴，即使是同样的话，我也绝对不会用让你不高兴的语气来说，我怎么会呢。有时候我也会不高兴，当然大宝不高兴的时候。我肯定不高兴，我们不高兴的时候，一只手都能数的过来，而且这里面大部分还是我自己造成的。我不高兴的时候，只要给你打个电话，听一听你傻的要命的笑声，心情马上就会变好，我希望自己的电话也有如此功效。</p>
+<p>感觉异地永远都是个沉重的话题，但是庆幸的是，我们一共只需要坚持半年，而且，截至到今天，我们只需要再坚持两个月。和广大的异地恋大军相比，我们可能是距离最远的那一拨，但是我们又是最快团聚的那一拨。这几年我一直在后悔，为什么当年我没有坚持问你去了哪里，我肯定会找一个离你比较近的学校。我又很庆幸你在杭州上学，而我顺利的被调剂到了软件工程这个专业，这两个，少了其中任何一个方面，我都不敢再打扰你。</p>
+<p>我会尽力找到杭州的工作，我也一定会找到，如果在学校找不到，放假我就去杭州找，我不信没有人要我，我那么优秀。等你考上北二外的研，我就去找北京的工作，相对杭州而言，北京的工作就更加好找了，而且那时候我已经比现在要强多了，所以就更不用担心找工作的事情了，可是要担心买房的事情了，这个话题很沉重，以后再说。</p>
+<p>确实是经常失眠，很多时候就是脑子太活跃，会一直回忆和你在一块的时间，会想象未来我该怎么做，我们会怎么样。即使会失眠，我也乐此不疲的想，因为想你的时候，根本控制不住。</p>
+<p>像我这样的人，不愿意去不断地结交新朋友，因为免不了要给他们讲述自己的过去，但是对于你，我想把所有的记忆，都说给你听，给你补上在我生命中缺少的每一分、每一秒。你问我，为什么不认识小时候的你，因为我想听你慢慢的给我讲。</p>
+<p>我未来一定会成为一位大厨，我想煮最美味的饭给你吃，我还想把我们家乡的味道都带到我们家里，这个应该有点难，至少我要带着妈妈的卤面和爸爸的大饼。我想象着每天你醒来给你煮粥的日子，想象着有时间陪你逛街的日子，想象着在外面说了一天普通话，回到家和你说着家乡说笑的日子，我希望这些，都能变成现实。</p>
+<p>我庆幸遇见了你，我庆幸喜欢上了你，我庆幸追到了你，这辈子一个你，足矣。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+<!-- 返回顶部 -->
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2018-05-20T03:12:34.000Z"><a href="/2018/05/20/view的测量/">2018-05-20</a></time>
+        
+  
+    <h1 class="title"><a href="/2018/05/20/view的测量/">view的测量</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        
+    <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#重写onWindowFocusChanged-boolean-hasFocus"><span class="toc-text"><a href="#&#x91CD;&#x5199;onWindowFocusChanged-boolean-hasFocus" class="headerlink" title="&#x91CD;&#x5199;onWindowFocusChanged(boolean hasFocus)"></a>&#x91CD;&#x5199;onWindowFocusChanged(boolean hasFocus)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#view-post-runnable"><span class="toc-text"><a href="#view-post-runnable" class="headerlink" title="view.post(runnable)"></a>view.post(runnable)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ViewTreeObserver"><span class="toc-text"><a href="#ViewTreeObserver" class="headerlink" title="ViewTreeObserver"></a>ViewTreeObserver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#view-measure-widthMeasureSpec-heightMeasureSpec"><span class="toc-text"><a href="#view-measure-widthMeasureSpec-heightMeasureSpec" class="headerlink" title="view.measure(widthMeasureSpec,heightMeasureSpec)"></a>view.measure(widthMeasureSpec,heightMeasureSpec)</span></a></li></ol>
+    </div>
+
+        <blockquote>
+<p>关于View的测量，网上众说纷纭，在《Android开发艺术探索》这本书里看到了比较靠谱的解答</p>
+</blockquote>
+<p>我们知道在Activity任何一个生命周期内调用view.getMeasuredWidth()或view.getWidth()得到的结果都是0</p>
+<p>很多人可能对getWidth和getMeasuredWidth不太了解，包括我也是。</p>
+<ol>
+<li>getWidth() 得到的是最终显示的宽度。</li>
+<li>getMeasuredWidth得到的是最终测量的宽度</li>
+</ol>
+<p>我们都知道，一般来说最终显示的宽度和最终测量的宽度是相等的，但是如果其父ViewGroup在layout的时候做了更改，最终显示的大小可能就和测量的大小不同。</p>
+<p>下面我介绍四种方法来得到大小</p>
+<h3 id="重写onWindowFocusChanged-boolean-hasFocus"><a href="#重写onWindowFocusChanged-boolean-hasFocus" class="headerlink" title="重写onWindowFocusChanged(boolean hasFocus)"></a>重写onWindowFocusChanged(boolean hasFocus)</h3><p>这个方法的含义是：view已经初始化完毕了，宽/高已经准备好了，这个时候去测量是没有问题的。但是要注意当Activity失去和获得焦点的时候均会被调用一次。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onWindowFocusChanged</span><span class="params">(<span class="keyword">boolean</span> hasFocus)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>.onWindowFocusChanged(hasFocus);</span><br><span class="line">       <span class="keyword">if</span>(hasFocus)&#123;</span><br><span class="line">           <span class="keyword">int</span> width=tv.getMeasuredWidth();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="view-post-runnable"><a href="#view-post-runnable" class="headerlink" title="view.post(runnable)"></a>view.post(runnable)</h3><p>通过post将一个Runnable发送到消息队列的尾部，然后等待Looper处理此Runnable的时候，View也初始化好了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tv.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">               <span class="keyword">int</span> width=tv.getMeasuredWidth();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="ViewTreeObserver"><a href="#ViewTreeObserver" class="headerlink" title="ViewTreeObserver"></a>ViewTreeObserver</h3><p>使用ViewTreeObserver的众多回调可以完成这个功能。比如使用OnGlobaLayoutListener这个接口，当View树的状态发生改变或者View树内部的View可见性发生改变时，onGlobalLayout方法将被回调。需要注意的是，伴随着View树的状态改变时，onGlobalLayout会被调用多次。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">    protected void onStart() &#123;</span><br><span class="line">        super.onStart();</span><br><span class="line">        ViewTreeObserver observer=tv.getViewTreeObserver();</span><br><span class="line">        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() &#123;</span><br><span class="line">            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)</span><br><span class="line">            @Override</span><br><span class="line">            public void onGlobalLayout() &#123;</span><br><span class="line">                tv.getViewTreeObserver().removeOnGlobalLayoutListener(this);</span><br><span class="line">                int width=tv.getMeasuredWidth();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="view-measure-widthMeasureSpec-heightMeasureSpec"><a href="#view-measure-widthMeasureSpec-heightMeasureSpec" class="headerlink" title="view.measure(widthMeasureSpec,heightMeasureSpec)"></a>view.measure(widthMeasureSpec,heightMeasureSpec)</h3><p>通过手动对View measure</p>
+<p>分情况来处理</p>
+<p><strong>match_parent</strong></p>
+<p>直接放弃<br>因为此模式下，我们需要知道parent的模式才能判断自己的模式。</p>
+<p><strong>具体的数值</strong></p>
+<p>比如宽高都是100px</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int widthMeasureSpec= View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.AT_MOST);</span><br><span class="line">int heightMeasureSpec= View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.AT_MOST);</span><br><span class="line">tv.measure(widthMeasureSpec,heightMeasureSpec);</span><br></pre></td></tr></table></figure>
+<p><strong>wrap_content</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int widthMeasureSpec= View.MeasureSpec.makeMeasureSpec((1&lt;&lt;30)-1, View.MeasureSpec.AT_MOST);</span><br><span class="line"> int heightMeasureSpec= View.MeasureSpec.makeMeasureSpec((1&lt;&lt;30)-1, View.MeasureSpec.AT_MOST);</span><br><span class="line"> tv.measure(widthMeasureSpec,heightMeasureSpec);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+<!-- 返回顶部 -->
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2018-05-19T13:19:57.000Z"><a href="/2018/05/19/自定义权限/">2018-05-19</a></time>
+        
+  
+    <h1 class="title"><a href="/2018/05/19/自定义权限/">自定义权限</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        
+    <div id="toc">
+        
+    </div>
+
+        <p>我觉得自定义权限就简单的加上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">android:permission=&quot;aaa.bbb.ccc&quot;</span><br></pre></td></tr></table></figure>
+<p>这样好像行不通</p>
+<p>还要再和application同级增加一个permission标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;permission</span><br><span class="line">        android:name=&quot;paul.permission.TEST&quot;</span><br><span class="line">        android:description=&quot;@string/permdesc_deadlyActivity&quot;</span><br><span class="line">        android:permissionGroup=&quot;paul.permission-group.TEST&quot;</span><br><span class="line">        android:protectionLevel=&quot;signature&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<p>对permission标签的各个属性大概说明一下， </p>
+<ol>
+<li>name，该标签就是权限的名字</li>
+<li>description，该标签就是权限的介绍</li>
+<li>permissionGroup，指定该权限的组</li>
+<li>protectionLevel，指定保护级别</li>
+</ol>
+<p>定义好了权限怎么用呢？</p>
+<p>在我们的四大组件中引入权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.MainActivity&quot;</span><br><span class="line">            android:permission=&quot;bbbbbbbb&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>在别的进程想要启动我们的四大组件时就必须要请求权限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;aaabbb&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+<!-- 返回顶部 -->
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2018-05-19T04:11:29.000Z"><a href="/2018/05/19/小知识点/">2018-05-19</a></time>
+        
+  
+    <h1 class="title"><a href="/2018/05/19/小知识点/">小知识点</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        
+    <div id="toc">
+        
+    </div>
+
+        <p>1.MVC模式</p>
+<p>通过Controller连接Model和view，目的是使数据和界面分离。Model表示数据，View表示界面，Controller表示控制器。</p>
+<p>当View的数据变化时，会通知Controller而不是Model，Controller接收到view的通知后在Model中采取相应的行动</p>
+<p>2.LinearLayout注意事项</p>
+<p>   在LinearLayout中添加分割线</p>
+<p>3.实现图像的半透明</p>
+<ol>
+<li>自定义View，使用paint.setAlpha(int)(0-255)</li>
+<li>覆盖上一层半透明的膜，background=”#EFFF”</li>
+</ol>
+<p>4.dp,sp和px的转化</p>
+<p>ldpi文件夹下对应的密度为120dpi,对应的分辨率为240<em>320 <br><br>mdpi文件夹下对应的密度为160dpi,对应的分辨率为320</em>480 <br><br>hdpi文件夹下对应的密度为240dpi,对应的分辨率为480<em>800 <br><br>xhdpi文件夹下对应的密度为320dpi,对应的分辨率为720</em>1280 <br><br>xxhdpi文件夹下对应的密度为480dpi,对应的分辨率为1080*1920 <br></p>
+<p>android系统将密度为160dpi的屏幕作为标准对于mdpi文件夹，在此屏幕的手机上1dp=1px。从上面系统屏幕密度可以得出各个密度值之间的换算；在mdpi中1dp=1px,在hdpi中1dp=1.5px，在xhdpi中1dp=2px,在xxhpi中1dp=3px。换算比例如下：ldpi:mdpi:hdpi:xhdpi:xxhdpi=3:4:6:8:12。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * dp转换成px</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">dp2px</span><span class="params">(Context context,<span class="keyword">float</span> dpValue)</span></span>&#123;</span><br><span class="line">        <span class="keyword">float</span> scale=context.getResources().getDisplayMetrics().density;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)(dpValue*scale+<span class="number">0.5f</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * px转换成dp</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">px2dp</span><span class="params">(Context context,<span class="keyword">float</span> pxValue)</span></span>&#123;</span><br><span class="line">        <span class="keyword">float</span> scale=context.getResources().getDisplayMetrics().density;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)(pxValue/scale+<span class="number">0.5f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * sp转换成px</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">sp2px</span><span class="params">(Context context,<span class="keyword">float</span> spValue)</span></span>&#123;</span><br><span class="line">        <span class="keyword">float</span> fontScale=context.getResources().getDisplayMetrics().scaledDensity;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) (spValue*fontScale+<span class="number">0.5f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * px转换成sp</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">px2sp</span><span class="params">(Context context,<span class="keyword">float</span> pxValue)</span></span>&#123;</span><br><span class="line">        <span class="keyword">float</span> fontScale=context.getResources().getDisplayMetrics().scaledDensity;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) (pxValue/fontScale+<span class="number">0.5f</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>利用系统TypeValue类来转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private int dp2px(Context context,int dpValue)&#123;</span><br><span class="line">        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dpValue,context.getResources().getDisplayMetrics());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private int sp2px(Context context,int spValue)&#123;</span><br><span class="line">        return (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,spValue,context.getResources().getDisplayMetrics());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>5.静态加载与动态加载</p>
+<p>静态引用的资源：</p>
+<ol>
+<li>包含.class的jar文件</li>
+<li>NDK Library(.so文件)</li>
+<li>另一个Java工程</li>
+</ol>
+<p>动态引用的资源：</p>
+<ol>
+<li>未安装的apk文件</li>
+<li>四大组件</li>
+<li>Javascript脚本</li>
+<li>包含classes.dex文件的jar文件</li>
+</ol>
+<p>6.判断Activity Action的App是否安装</p>
+<p>代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PackageManager packageManager=getPackageManager();</span><br><span class="line">       Intent intent=new Intent(&quot;some action&quot;);</span><br><span class="line">       @SuppressLint(&quot;WrongConstant&quot;) List&lt;ResolveInfo&gt; resolveInfos=packageManager.queryIntentActivities(intent,PackageManager.GET_INTENT_FILTERS);</span><br><span class="line">       //说明没有对应的action</span><br><span class="line">       if(resolveInfos.size()==0)&#123;</span><br><span class="line">           </span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以用同样的方式查询，Broadcast Receiver是否安装</p>
+<ul>
+<li>queryBroadcastReceivers  Broadcast Receiver</li>
+</ul>
+<p>对于AIDL的service</p>
+<p>如果bindService返回false就说明没有该Service</p>
+<p>对于Content Provider</p>
+<p>如果返回的cursor为null，说明这个Content Provider不存在。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+<!-- 返回顶部 -->
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2018-05-18T12:32:42.000Z"><a href="/2018/05/18/http/">2018-05-18</a></time>
+        
+  
+    <h1 class="title"><a href="/2018/05/18/http/">http</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        
+    <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#GET和POST区别"><span class="toc-text"><a href="#GET&#x548C;POST&#x533A;&#x522B;" class="headerlink" title="GET&#x548C;POST&#x533A;&#x522B;"></a>GET&#x548C;POST&#x533A;&#x522B;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP请求格式"><span class="toc-text"><a href="#HTTP&#x8BF7;&#x6C42;&#x683C;&#x5F0F;" class="headerlink" title="HTTP&#x8BF7;&#x6C42;&#x683C;&#x5F0F;"></a>HTTP&#x8BF7;&#x6C42;&#x683C;&#x5F0F;</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GET和POST最全的区别"><span class="toc-text"><a href="#GET&#x548C;POST&#x6700;&#x5168;&#x7684;&#x533A;&#x522B;" class="headerlink" title="GET&#x548C;POST&#x6700;&#x5168;&#x7684;&#x533A;&#x522B;"></a>GET&#x548C;POST&#x6700;&#x5168;&#x7684;&#x533A;&#x522B;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP应用"><span class="toc-text"><a href="#HTTP&#x5E94;&#x7528;" class="headerlink" title="HTTP&#x5E94;&#x7528;"></a>HTTP&#x5E94;&#x7528;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS传输协议原理"><span class="toc-text"><a href="#HTTPS&#x4F20;&#x8F93;&#x534F;&#x8BAE;&#x539F;&#x7406;" class="headerlink" title="HTTPS&#x4F20;&#x8F93;&#x534F;&#x8BAE;&#x539F;&#x7406;"></a>HTTPS&#x4F20;&#x8F93;&#x534F;&#x8BAE;&#x539F;&#x7406;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#http的状态响应码"><span class="toc-text"><a href="#http&#x7684;&#x72B6;&#x6001;&#x54CD;&#x5E94;&#x7801;" class="headerlink" title="http&#x7684;&#x72B6;&#x6001;&#x54CD;&#x5E94;&#x7801;"></a>http&#x7684;&#x72B6;&#x6001;&#x54CD;&#x5E94;&#x7801;</span></a>
+    </div>
+
+        <blockquote>
+<p>Http 中文全称：超文本传输协议</p>
+</blockquote>
+<p>HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个无状态的协议。</p>
+<p>HTTP模型：</p>
+<p><img src="http/http.png" alt=""></p>
+<p>HTTP默认的端口号为80，HTTPS的端口号为443。</p>
+<h3 id="GET和POST区别"><a href="#GET和POST区别" class="headerlink" title="GET和POST区别"></a>GET和POST区别</h3><p>GET主要是用来请求数据的，向特定的资源发出请求而POST主要用于提交数据</p>
+<p>GET也可以用来提交数据。GET方式提交数据，会带来安全问题，比如一个登录页面，通过GET方式提交数据时，用户名和密码将出现在URL上，如果页面可以被缓存或者其他人可以访问这台机器，就可以从历史记录获得该用户的账号和密码。</p>
+<p>GET提交的数据会放在URL之后，以?分割URL和传输数据，参数之间以&amp;相连，如EditPosts.aspx?name=test1&amp;id=123456. POST方法是把提交的数据放在HTTP包的Body中,即下图的请求数据中</p>
+<p>GET提交的数据大小有限制，最多只能有1024字节（因为浏览器对URL的长度有限制），而POST方法提交的数据没有限制。</p>
+<p>GET方式需要使用Request.QueryString来取得变量的值，而POST方式通过Request.Form来获取变量的值。</p>
+<h2 id="HTTP请求格式"><a href="#HTTP请求格式" class="headerlink" title="HTTP请求格式"></a>HTTP请求格式</h2><p>HTTP请求报文格式如下：</p>
+<p><img src="http/request.jpg" alt=""></p>
+<p>GET请求报文如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> GET /search?hl=zh-CN&amp;source=hp&amp;q=domety&amp;aq=f&amp;oq= HTTP/1.1  </span><br><span class="line">Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, </span><br><span class="line">application/msword, application/x-silverlight, application/x-shockwave-flash, */*  </span><br><span class="line">Referer: &lt;a href=&quot;http://www.google.cn/&quot;&gt;http://www.google.cn/&lt;/a&gt;  </span><br><span class="line">Accept-Language: zh-cn  </span><br><span class="line">Accept-Encoding: gzip, deflate  </span><br><span class="line">User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; TheWorld)  </span><br><span class="line">Host: &lt;a href=&quot;http://www.google.cn&quot;&gt;www.google.cn&lt;/a&gt;  </span><br><span class="line">Connection: Keep-Alive  </span><br><span class="line">Cookie: PREF=ID=80a06da87be9ae3c:U=f7167333e2c3b714:NW=1:TM=1261551909:LM=1261551917:S=ybYcq2wpfefs4V9g; </span><br><span class="line">NID=31=ojj8d-IygaEtSxLgaJmqSjVhCspkviJrB6omjamNrSm8lZhKy_yMfO2M4QMRKcH1g0iQv9u-2hfBW7bUFwVh7pGaRUb0RnHcJU37y-</span><br><span class="line">FxlRugatx63JLv7CWMD6UB_O_r</span><br></pre></td></tr></table></figure>
+<p>可以看到，GET方式的请求一般不包含”请求内容”部分，请求数据以地址的形式表现在请求行。<br>显然，这种方式不适合传送私密数据。另外，由于不同的浏览器对地址的字符限制也有所不同，一般最多只能识别1024个字符，所以如果需要传送大量数据的时候，也不适合使用GET方式。</p>
+<blockquote>
+<p>对于上面提到的不适合使用GET方式的情况，可以考虑使用POST方式，因为使用POST方法可以允许客户端给服务器提供信息较多。POST方法将请求参数封装在HTTP请求数据中，以名称/值的形式出现，可以传输大量数据，这样POST方式对传送的数据大小没有限制，而且也不会显示在URL中。</p>
+</blockquote>
+<p>Post请求报文格式：</p>
+<p><img src="http/Postrequest.jpg" alt=""></p>
+<p>可以看到，POST方式请求行中不包含数据字符串，这些数据保存在”请求内容”部分，各数据之间也是使用”&amp;”符号隔开。POST方式大多用于页面的表单中。因为POST也能完成GET的功能，因此多数人在设计表单的时候一律都使用POST方式，其实这是一个误区。GET方式也有自己的特点和优势，我们应该根据不同的情况来选择是使用GET还是使用POST。</p>
+<p>既然POST也能实现GET的功能，而且又有显著优势，GET的优势在哪呢？</p>
+<h1 id="GET和POST最全的区别"><a href="#GET和POST最全的区别" class="headerlink" title="GET和POST最全的区别"></a>GET和POST最全的区别</h1><ol>
+<li>post更安全（不会作为url的一部分，不会被缓存、保存在服务器日志、以及浏览器浏览记录中） </li>
+<li>post发送的数据更大（get有url长度限制）</li>
+<li>post能发送更多的数据类型（get只能发送ASCII字符）</li>
+<li>post用于修改和写入数据，get一般用于搜索排序和筛选之类的操作（淘宝，支付宝的搜索查询都是get提交），目的是资源的获取，读取数据 </li>
+<li>post比get慢 </li>
+</ol>
+<p><strong>为什么POST比GET慢？</strong></p>
+<ol>
+<li>post请求包含更多的请求头 ：因为post需要在请求的body部分包含数据，所以会多了几个数据描述部分的首部字段（如：content-type）,这其实是微乎其微的。</li>
+<li>最重要的一条，post在真正接收数据之前会先将请求头发送给服务器进行确认，然后才真正发送数据 </li>
+<li>get会将数据缓存起来，而post不会 </li>
+<li>post不能进行管道化传输 </li>
+</ol>
+<p>post请求的过程：</p>
+<ol>
+<li>浏览器请求tcp连接（第一次握手</li>
+<li>服务器答应进行tcp连接（第二次握手）</li>
+<li>浏览器确认，并发送post请求头（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）</li>
+<li>服务器返回100 Continue响应 </li>
+<li>浏览器发送数据 </li>
+<li>服务器返回200 OK响应 </li>
+</ol>
+<p>GET请求过程：</p>
+<ol>
+<li>浏览器请求tcp连接（第一次握手）</li>
+<li>服务器答应进行tcp连接（第二次握手）</li>
+<li>浏览器确认，并发送get请求头和数据（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）</li>
+<li>服务器返回200 OK响应</li>
+</ol>
+<h1 id="HTTP应用"><a href="#HTTP应用" class="headerlink" title="HTTP应用"></a>HTTP应用</h1><ol>
+<li>断点续传的实现原理</li>
+<li>多线程下载的原理</li>
+</ol>
+<p>都是因为GET请求的Range请求头可以规定请求的资源范围。</p>
+<h1 id="HTTPS传输协议原理"><a href="#HTTPS传输协议原理" class="headerlink" title="HTTPS传输协议原理"></a>HTTPS传输协议原理</h1><p>HTTPS（全称：Hypertext Transfer Protocolover Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容请看SSL。</p>
+<p><strong>两种基本的加解密算法类型</strong></p>
+<p>对称加密：密钥只有一个，加密解密为同一个密码，且加解密速度快，典型的对称加密算法有DES、AES等。</p>
+<p>非对称加密：密钥成对出现（且根据公钥无法推知私钥，根据私钥也无法推知公钥），加密解密使用不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称加密速度较慢，典型的非对称加密算法有RSA、DSA等。</p>
+<p><strong>HTTPS通信过程</strong></p>
+<p><img src="http/https.png" alt=""></p>
+<p><strong>HTTPS通信的优点</strong></p>
+<ol>
+<li>客户端产生的密钥只有客户端和服务器端能得到</li>
+<li>加密的数据只有客户端和服务器端才能得到明文</li>
+<li>客户端和服务端的通信是安全的</li>
+</ol>
+<h1 id="http的状态响应码"><a href="#http的状态响应码" class="headerlink" title="http的状态响应码"></a>http的状态响应码</h1><p><strong>1(信息类)：</strong>表示接收到请求并且继续处理</p>
+<p>100——客户必须继续发出请求</p>
+<p>101——客户要求服务器根据请求转换HTTP协议版本</p>
+<p><strong>2(响应成功)：</strong>表示动作被成功接收、理解和接受</p>
+<p>200——表明该请求被成功地完成，所请求的资源发送回客户端</p>
+<p>201——提示知道新文件的URL</p>
+<p>202——接受和处理、但处理未完成</p>
+<p><strong>3(重定向类)：</strong>为了完成指定的动作，必须接受进一步处理</p>
+<p>300——请求的资源可在多处得到</p>
+<p>301——本网页被永久性转移到另一个URL</p>
+<p><strong>4(客户端错误类)：</strong>请求包含错误语法或不能正确执行</p>
+<p>400——客户端请求有语法错误，不能被服务器所理解</p>
+<p>404——一个404错误表明可连接服务器，但服务器无法取得所请求的网页，请求资源不存在。eg：输入了错误的URL</p>
+<p><strong>5(服务端错误类)：</strong>服务器不能正确执行一个正确的请求</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+<!-- 返回顶部 -->
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2018-05-17T00:43:16.000Z"><a href="/2018/05/17/datatranformation/">2018-05-17</a></time>
+        
+  
+    <h1 class="title"><a href="/2018/05/17/datatranformation/">datatranformation</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        
+    <div id="toc">
+        
+    </div>
+
+        <p>多线程通信</p>
+<ol>
+<li>s lock</li>
+<li>管道</li>
+<li>原子量</li>
+<li>ThreadLocal</li>
+<li>怎么跨进程传输大量的数据，共享内存8</li>
+<li>localsocket</li>
+</ol>
+<p>Looper.myLopper;</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+<!-- 返回顶部 -->
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2018-05-14T08:09:07.000Z"><a href="/2018/05/14/FragmentLifeCircle/">2018-05-14</a></time>
+        
+  
+    <h1 class="title"><a href="/2018/05/14/FragmentLifeCircle/">FragmentLifeCircle</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        
+    <div id="toc">
+        
+    </div>
+
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+<!-- 返回顶部 -->
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2018-05-04T12:48:41.000Z"><a href="/2018/05/04/IndicatorText/">2018-05-04</a></time>
+        
+  
+    <h1 class="title"><a href="/2018/05/04/IndicatorText/">IndicatorText</a></h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        
+    <div id="toc">
+        
+    </div>
+
+        <blockquote>
+<p>一直想总结一下自定义View，可是一直感觉太难，思路混乱不太敢写，经过这两个月的复习，也算是积累了一点知识，所以在这总结一下。</p>
+</blockquote>
+<p>我自定义了一个模仿通讯录的侧边字母导航栏</p>
+<p><strong>先说一下在这个过程中遇到的坑</strong></p>
+<ol>
+<li>关于构造函数</li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+<!-- 返回顶部 -->
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div>
+ 
+<nav id="pagination">
+  
+  
+    <a href="/page/2/" class="alignright next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+      <aside id="sidebar" class="alignright">
+        
+           
+
+        
+          <div class="widget tag">
+  <h3 class="title">微信公众账号</h3>
+    <ul class="entry">
+      <img src="/img/default/qrcode.jpg" alt="欢迎关注个人公众账号" style= "width: 100%">
+    </ul>
+</div>
+        
+          <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+        
+          
+  <div class="widget tag">
+    <h3 class="title">友情链接</h3>
+      <ul class="entry">
+        
+          <li class='link'><a href='http://xiaoyun.farbox.com'>晓晓博客</a></li>
+        
+          <li class='link'><a href='http://www.ituring.com.cn/users/136808'>图灵社区</a></li>
+        
+      </ul>
+  </div>
+
+
+        
+          
+  <div class="widget tag">
+    <h3 class="title">归档</h3>
+	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">公元 2018 年</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">公元 2017 年</a><span class="archive-list-count">11</span></li></ul>
+  </div>
+
+        
+      </aside>
+      <div class="clearfix"></div>
+    </div>
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2018 Sunday
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+
+  <div>
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<!-- calendar widget -->
+
+  <script src="/js/calendar.js"></script>
+  <script src="/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 百度统计 -->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?9acf0cedd48dc53be256ede5a98c2aaa";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+<!-- fancybox -->
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>

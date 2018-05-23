@@ -1,4 +1,106 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>BroadCast - I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0;"><header class="head"><h1 class="head-title u-fl"><a href="/">I'm Sunday</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-04-07T04:19:16.000Z">April 7, 2018</time><h1 class="post__title"><a href="/2018/04/07/BroadCast/">BroadCast</a></h1><div class="post__main echo"><p>&gt;</p>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>BroadCast | I&#39;m Sunday</title>
+  <meta name="author" content="Sunday">
+  
+  <meta name="description" content="&amp;gt;
+广播两种注册方式的区别今天介绍一下Android的四大组件之一的BroadCastReceiver，即广播。广播类似于JAVA设计模式中的观察者模式，即当被观察者数据变化的时候，会去通知观察者做相应处理。这里也是一样，当发出广播的时候，那么注册过该广播的人，就能收到这个广播，进而做一些工作">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="BroadCast"/>
+  <meta property="og:site_name" content="I&#39;m Sunday"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="alternate" href="/atom.xml" title="I&#39;m Sunday" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <!-- wumiiVerification -->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" />
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!-- Font-Awesome -->
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+
+</head>
+
+<body>
+  <header id="header"><div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+			<div class='avatar'>
+				<img src = "/img/default/avatar.png">
+              </div>
+		
+		<div class="header-div">
+		    <h1><a href="/">I&#39;m Sunday</a></h1>
+		    <h2><a href="/"></a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+		    		
+		    		  <a href="/"><i class="fa fa-home"></i>首页</a>
+		    		
+		    		  <a href="/archives"><i class="fa fa-archive"></i>归档</a>
+		    		
+		    		  <a href="/node"><i class="fa fa-book"></i>Node.js</a>
+		    		
+		    		  <a href="/hexo"><i class="fa fa-book"></i>电子书</a>
+		    		
+		</div>
+		<div id="sub-nav" class="alignright">
+		    
+		      <a href="/atom.xml"><i class="fa fa-rss"></i>订阅</a>
+		    
+		      <a href="/customization"><i class="fa fa-question-circle"></i>留言</a>
+		    
+		      <a href="/about"><i class="fa fa-user"></i>关于我</a>
+		    
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+    <div id="content" class="inner">
+      <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2018-04-07T04:19:16.000Z"><a href="/2018/04/07/BroadCast/">2018-04-07</a></time>
+        
+  
+    <h1 class="title">BroadCast</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        
+    <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#广播两种注册方式的区别"><span class="toc-text"><a href="#&#x5E7F;&#x64AD;&#x4E24;&#x79CD;&#x6CE8;&#x518C;&#x65B9;&#x5F0F;&#x7684;&#x533A;&#x522B;" class="headerlink" title="&#x5E7F;&#x64AD;&#x4E24;&#x79CD;&#x6CE8;&#x518C;&#x65B9;&#x5F0F;&#x7684;&#x533A;&#x522B;"></a>&#x5E7F;&#x64AD;&#x4E24;&#x79CD;&#x6CE8;&#x518C;&#x65B9;&#x5F0F;&#x7684;&#x533A;&#x522B;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#动态注册：即用代码动态的注册、注销广播"><span class="toc-text"><a href="#&#x52A8;&#x6001;&#x6CE8;&#x518C;&#xFF1A;&#x5373;&#x7528;&#x4EE3;&#x7801;&#x52A8;&#x6001;&#x7684;&#x6CE8;&#x518C;&#x3001;&#x6CE8;&#x9500;&#x5E7F;&#x64AD;" class="headerlink" title="&#x52A8;&#x6001;&#x6CE8;&#x518C;&#xFF1A;&#x5373;&#x7528;&#x4EE3;&#x7801;&#x52A8;&#x6001;&#x7684;&#x6CE8;&#x518C;&#x3001;&#x6CE8;&#x9500;&#x5E7F;&#x64AD;"></a>&#x52A8;&#x6001;&#x6CE8;&#x518C;&#xFF1A;&#x5373;&#x7528;&#x4EE3;&#x7801;&#x52A8;&#x6001;&#x7684;&#x6CE8;&#x518C;&#x3001;&#x6CE8;&#x9500;&#x5E7F;&#x64AD;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#静态广播：把广播写死在manifest-xml中"><span class="toc-text"><a href="#&#x9759;&#x6001;&#x5E7F;&#x64AD;&#xFF1A;&#x628A;&#x5E7F;&#x64AD;&#x5199;&#x6B7B;&#x5728;manifest-xml&#x4E2D;" class="headerlink" title="&#x9759;&#x6001;&#x5E7F;&#x64AD;&#xFF1A;&#x628A;&#x5E7F;&#x64AD;&#x5199;&#x6B7B;&#x5728;manifest.xml&#x4E2D;"></a>&#x9759;&#x6001;&#x5E7F;&#x64AD;&#xFF1A;&#x628A;&#x5E7F;&#x64AD;&#x5199;&#x6B7B;&#x5728;manifest.xml&#x4E2D;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#两者的区别"><span class="toc-text"><a href="#&#x4E24;&#x8005;&#x7684;&#x533A;&#x522B;" class="headerlink" title="&#x4E24;&#x8005;&#x7684;&#x533A;&#x522B;"></a>&#x4E24;&#x8005;&#x7684;&#x533A;&#x522B;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#特别注意"><span class="toc-text"><a href="#&#x7279;&#x522B;&#x6CE8;&#x610F;" class="headerlink" title="&#x7279;&#x522B;&#x6CE8;&#x610F;"></a>&#x7279;&#x522B;&#x6CE8;&#x610F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#广播的类型"><span class="toc-text"><a href="#&#x5E7F;&#x64AD;&#x7684;&#x7C7B;&#x578B;" class="headerlink" title="&#x5E7F;&#x64AD;&#x7684;&#x7C7B;&#x578B;"></a>&#x5E7F;&#x64AD;&#x7684;&#x7C7B;&#x578B;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-普通广播"><span class="toc-text"><a href="#1-&#x666E;&#x901A;&#x5E7F;&#x64AD;" class="headerlink" title="1 &#x666E;&#x901A;&#x5E7F;&#x64AD;"></a>1 &#x666E;&#x901A;&#x5E7F;&#x64AD;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-系统广播"><span class="toc-text"><a href="#2-&#x7CFB;&#x7EDF;&#x5E7F;&#x64AD;" class="headerlink" title="2 &#x7CFB;&#x7EDF;&#x5E7F;&#x64AD;"></a>2 &#x7CFB;&#x7EDF;&#x5E7F;&#x64AD;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有序广播（Ordered-Broadcast）"><span class="toc-text"><a href="#&#x6709;&#x5E8F;&#x5E7F;&#x64AD;&#xFF08;Ordered-Broadcast&#xFF09;" class="headerlink" title="&#x6709;&#x5E8F;&#x5E7F;&#x64AD;&#xFF08;Ordered Broadcast&#xFF09;"></a>&#x6709;&#x5E8F;&#x5E7F;&#x64AD;&#xFF08;Ordered Broadcast&#xFF09;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-App应用内广播（Local-Broadcast）"><span class="toc-text"><a href="#4-App&#x5E94;&#x7528;&#x5185;&#x5E7F;&#x64AD;&#xFF08;Local-Broadcast&#xFF09;" class="headerlink" title="4 App&#x5E94;&#x7528;&#x5185;&#x5E7F;&#x64AD;&#xFF08;Local Broadcast&#xFF09;"></a>4 App&#x5E94;&#x7528;&#x5185;&#x5E7F;&#x64AD;&#xFF08;Local Broadcast&#xFF09;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#广播的生命周期"><span class="toc-text"><a href="#&#x5E7F;&#x64AD;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="&#x5E7F;&#x64AD;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"></a>&#x5E7F;&#x64AD;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#广播接收器的生命周期"><span class="toc-text"><a href="#&#x5E7F;&#x64AD;&#x63A5;&#x6536;&#x5668;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="&#x5E7F;&#x64AD;&#x63A5;&#x6536;&#x5668;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"></a>&#x5E7F;&#x64AD;&#x63A5;&#x6536;&#x5668;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#广播发送者的生命周期"><span class="toc-text"><a href="#&#x5E7F;&#x64AD;&#x53D1;&#x9001;&#x8005;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="&#x5E7F;&#x64AD;&#x53D1;&#x9001;&#x8005;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"></a>&#x5E7F;&#x64AD;&#x53D1;&#x9001;&#x8005;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在onReceived方法中不能做任何耗时操作"><span class="toc-text"><a href="#&#x5728;onReceived&#x65B9;&#x6CD5;&#x4E2D;&#x4E0D;&#x80FD;&#x505A;&#x4EFB;&#x4F55;&#x8017;&#x65F6;&#x64CD;&#x4F5C;" class="headerlink" title="&#x5728;onReceived&#x65B9;&#x6CD5;&#x4E2D;&#x4E0D;&#x80FD;&#x505A;&#x4EFB;&#x4F55;&#x8017;&#x65F6;&#x64CD;&#x4F5C;"></a>&#x5728;onReceived&#x65B9;&#x6CD5;&#x4E2D;&#x4E0D;&#x80FD;&#x505A;&#x4EFB;&#x4F55;&#x8017;&#x65F6;&#x64CD;&#x4F5C;</span></a></li></ol>
+    </div>
+
+        <p>&gt;</p>
 <h3 id="广播两种注册方式的区别"><a href="#广播两种注册方式的区别" class="headerlink" title="广播两种注册方式的区别"></a>广播两种注册方式的区别</h3><p>今天介绍一下Android的四大组件之一的BroadCastReceiver，即广播。广播类似于JAVA设计模式中的观察者模式，即当被观察者数据变化的时候，会去通知观察者做相应处理。这里也是一样，当发出广播的时候，那么注册过该广播的人，就能收到这个广播，进而做一些工作。</p>
 <p>上面说的广播注册，在Andro的广播作为例子，看看这两种方式的具体用法。动态注册不许要在manifest文件里写任何东西（除了需要的权id中有两种方式，即动态注册(代码注册)、静态注册(清单文件注册)，下面我以Android中网络状态变化发出限）。</p>
 <hr>
@@ -139,4 +241,130 @@
 </ol>
 <p>如果：在onReceive开启一个线程做任务，任务未做完系统有可能回收进程，做任务的线程就没有对应的进程上下文，会被回收，任务就有可能未完成。</p>
 <p>就是onReceived生命周期很短，如果开启线程的receiver没了，这些线程很容易就会被回收。</p>
-</div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/Android/">Android</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  <div class="tags">
+    <a href="/tags/Android/">Android</a>
+  </div>
+
+        
+  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+<!-- 返回顶部 -->
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div></div></div>
+      <aside id="sidebar" class="alignright">
+        
+           
+
+        
+          <div class="widget tag">
+  <h3 class="title">微信公众账号</h3>
+    <ul class="entry">
+      <img src="/img/default/qrcode.jpg" alt="欢迎关注个人公众账号" style= "width: 100%">
+    </ul>
+</div>
+        
+          <div class="widget tag">
+  <h3 class="title">日历云</h3>
+  <div id="calendar"></div>
+</div>
+
+        
+          
+  <div class="widget tag">
+    <h3 class="title">友情链接</h3>
+      <ul class="entry">
+        
+          <li class='link'><a href='http://xiaoyun.farbox.com'>晓晓博客</a></li>
+        
+          <li class='link'><a href='http://www.ituring.com.cn/users/136808'>图灵社区</a></li>
+        
+      </ul>
+  </div>
+
+
+        
+          
+  <div class="widget tag">
+    <h3 class="title">归档</h3>
+	<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">公元 2018 年</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/">公元 2017 年</a><span class="archive-list-count">11</span></li></ul>
+  </div>
+
+        
+      </aside>
+      <div class="clearfix"></div>
+    </div>
+  <footer id="footer"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2018 Sunday
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+
+  <div>
+    Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<!-- calendar widget -->
+
+  <script src="/js/calendar.js"></script>
+  <script src="/js/languages.js"></script>
+  <script type="text/javascript">
+    $(function() {
+    
+      $('#calendar').aCalendar('zh-CN',{single:, root:'calendar'});
+    
+    });
+  </script>
+
+
+<!-- 百度统计 -->
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?9acf0cedd48dc53be256ede5a98c2aaa";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+<!-- fancybox -->
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>
