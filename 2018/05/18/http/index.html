@@ -60,7 +60,9 @@
 <h1 id="HTTPS传输协议原理"><a href="#HTTPS传输协议原理" class="headerlink" title="HTTPS传输协议原理"></a>HTTPS传输协议原理</h1><p>HTTPS（全称：Hypertext Transfer Protocolover Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容请看SSL。</p>
 <p><strong>两种基本的加解密算法类型</strong></p>
 <p>对称加密：密钥只有一个，加密解密为同一个密码，且加解密速度快，典型的对称加密算法有DES、AES等。</p>
-<p>非对称加密：密钥成对出现（且根据公钥无法推知私钥，根据私钥也无法推知公钥），加密解密使用不同密钥（公钥加密需要私钥解密，私钥加密需要公钥解密），相对对称加密速度较慢，典型的非对称加密算法有RSA、DSA等。</p>
+<p>非对称加密：密钥成对出现（且根据公钥无法推知私钥，根据私钥也无法推知公钥），加密解密使用不同密钥（发送方使用对方的公钥进行加密处理，对方收到加密的信息后，再使用自己的私有密钥进行解密），相对对称加密速度较慢，典型的非对称加密算法有RSA、DSA等。</p>
+<p><strong>HTTPS采用混合加密机制</strong></p>
+<p>在秘钥交换阶段使用非对称加密，在报文传输阶段使用共享秘钥加密。</p>
 <p><strong>HTTPS通信过程</strong></p>
 <p><img src="https.png" alt=""></p>
 <p><strong>HTTPS通信的优点</strong></p>
