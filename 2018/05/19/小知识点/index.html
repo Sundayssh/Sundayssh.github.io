@@ -38,4 +38,12 @@
 <p>如果bindService返回false就说明没有该Service</p>
 <p>对于Content Provider</p>
 <p>如果返回的cursor为null，说明这个Content Provider不存在。</p>
+<p><strong>私有进程和全局进程</strong></p>
+<p>在四大组件注册的时候，我们可以指定进程</p>
+<p>私有进程<br>android:process=”:remote”</p>
+<p>其他应用的组件不能在这个进程中。</p>
+<p>全局进程</p>
+<p>android:process=”com.example.processtest.remote”</p>
+<p>其他应用通过ShareUID方式可以和它跑到一个进程中。</p>
+<p>多进程中每个进程都有一个Application实例。</p>
 </div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/Android/">Android</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
