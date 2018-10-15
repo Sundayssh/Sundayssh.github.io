@@ -1,4 +1,22 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Sunday"><link rel="alternative" href="/atom.xml" title="I'm Sunday" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>Kotlin学习笔记 - I'm Sunday</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--><script src="/js/jquery-3.1.1.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script></head><body style="opacity:0;"><header class="head"><h1 class="head-title u-fl"><a href="/">I'm Sunday</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">カタログ/（目录）</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"> <time class="post__time" datetime="2018-07-29T06:39:36.000Z">July 29, 2018</time><h1 class="post__title"><a href="/2018/07/29/Kotlin学习笔记/">Kotlin学习笔记</a></h1><div class="post__main echo"><blockquote>
 <p>作为一个Android开发者，不学习Kotlin好像显得有点落伍，Kotlin好像评价也不错，所以打算学习一下，在这里做个笔记。</p>
 </blockquote>
+<h1 id="空指针安全"><a href="#空指针安全" class="headerlink" title="空指针安全"></a>空指针安全</h1><p>我了解到的Kotlin和java第一个最大的不同就是声明变量的形式不同</p>
+<ul>
+<li>java: 修饰符 类型 变量名</li>
+<li>Kotlin: 修饰符 var/val 变量名：类型 </li>
+</ul>
+<p>而且Kotlin中没有基本类型</p>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h4 id="与java不同的是Kotlin支持不可变集合，不可变集合有什么好处呢？"><a href="#与java不同的是Kotlin支持不可变集合，不可变集合有什么好处呢？" class="headerlink" title="与java不同的是Kotlin支持不可变集合，不可变集合有什么好处呢？"></a>与java不同的是Kotlin支持不可变集合，不可变集合有什么好处呢？</h4><ul>
+<li>保证线程安全：在并发程序中，使用Immutable既保证线程安全性，也大大增强了并发时的效率（跟并发锁方式相比）。尤其当一个对象是值对象时，更应该考虑采用Immutable方式；</li>
+<li>被不可信的类库使用时会很安全；</li>
+<li>如果一个对象不需要支持修改操作(mutation)，将会节省空间和时间的开销；经过分析，所有不可变的集合实现都比可变集合更加有效地利用内存；</li>
+</ul>
+<h4 id="Kotlin为什么不建议用构造器来创建集合？"><a href="#Kotlin为什么不建议用构造器来创建集合？" class="headerlink" title="Kotlin为什么不建议用构造器来创建集合？"></a>Kotlin为什么不建议用构造器来创建集合？</h4><p>这个还是未知</p>
+<h1 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h1><p>Kotlin分为主构造器和次构造器</p>
+<p>所谓主构造器就是在类的创建语句中创建的构造器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class Test(string:String)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>次构造器就是在类中显示创建的构造器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Test(string:String)&#123;</span><br><span class="line">   constructor(last:String) : this()&#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当一个类有主构造器时</p>
 </div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/Kotlin/">Kotlin</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2018 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
