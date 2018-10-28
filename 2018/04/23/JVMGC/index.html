@@ -17,7 +17,7 @@
 </ol>
 <p>例子：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Car car=<span class="keyword">new</span> Car();</span><br><span class="line">WeakReference&lt;Car&gt; weakCar = <span class="keyword">new</span> WeakReference(Car)(car);</span><br></pre></td></tr></table></figure>
-<p>这是一个弱引用的例子<br><br>weakCar 为newCar()的弱引用<br><br>这样可以取出弱引用的对象<br>Car car=weakCar</p>
+<p>这是一个弱引用的例子<br><br>weakCar 为newCar()的弱引用<br><br>这样可以取出弱引用的对象<br>Car car=weakCar.get()</p>
 <h3 id="关于什么时候回收"><a href="#关于什么时候回收" class="headerlink" title="关于什么时候回收"></a>关于什么时候回收</h3><p>垃圾回收用户来说是透明的，即我们不需要关心什么时候回收，怎样回收，当然我们也可以强制回收。</p>
 <ol>
 <li>当内存不足时，Jvm会自动回收</li>
