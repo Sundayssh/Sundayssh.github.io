@@ -85,4 +85,13 @@
 <p>400——客户端请求有语法错误，不能被服务器所理解</p>
 <p>404——一个404错误表明可连接服务器，但服务器无法取得所请求的网页，请求资源不存在。eg：输入了错误的URL</p>
 <p><strong>5(服务端错误类)：</strong>服务器不能正确执行一个正确的请求</p>
+<h1 id="非对称加密细节"><a href="#非对称加密细节" class="headerlink" title="非对称加密细节"></a>非对称加密细节</h1><p> 非对称加密有两套“钥匙”即“公钥”和“私钥”。传统的非对称加密是A和B都有自己的公钥和私钥，公钥用来加密，私钥用来解密。A首先将自己的公钥发给B，B用A的公钥将自己的公钥加密发给A，A通过自己的私钥，解密B发来的数据，得到B的公钥（这样别人是拿不到B的公钥的），现在A有B的公钥，B有A的公钥，在发送数据的时候就用对方的公钥加密，就保证了数据传输的安全性。但是这种加密算法有损性能，所以Https运用了混合加密算法，即秘钥传输的时候用非对称加密，数据传输的时候用对称加密。</p>
+<h1 id="混合加密细节"><a href="#混合加密细节" class="headerlink" title="混合加密细节"></a>混合加密细节</h1><p>Https混合加密的过程</p>
+<ol>
+<li>客户端发送初始请求该请求包含客户端支持的加密算法列表供服务器选择，出于性能考虑，这些算法一般来说都是对称加密算法。</li>
+<li>服务器接收请求，返回服务器生成的数字证书和选择的加密算法，此时公钥作为证书的一部分一并传给客户端。</li>
+<li>客户端收到服务器返回的证书和加密算法，客户端先校验证书的合法性，如果合法就根据选取的加密算法生成一个密钥，并用公钥对该密钥进行加密，传给服务器端。</li>
+<li>服务器端收到之后用私钥进行解密（别人是无法得到这个私钥的，所以也得不到这个秘钥）得到客户端传来的密钥。</li>
+<li>在后续的传输过程中就用该密钥进行对称加密。</li>
+</ol>
 </div></header><footer class="post__foot u-cf"><ul class="post__tag u-fl"><li class="post__tag__item"><a class="post__tag__link" href="/tags/网络/">网络</a></li></ul></footer></article><section class="reward"> <a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechatss.png" title="微信"></div></section><div class="comments" id="lv-container" data-id="city" data-uid="your uid"><script>(function(d, s) {var j, e = d.getElementsByTagName(s)[0];if (typeof LivereTower === 'function') { return; } j = d.createElement(s);j.src = 'https://cdn-city.livere.com/js/embed.dist.js';j.async = true;e.parentNode.insertBefore(j, e);})(document, 'script');</script></div></main><footer class="foot"><div class="foot-copy">&copy; 2016-2019 Sunday</div></footer><script src="/js/scroller.js"></script><script src="/js/main.js"></script></body></html>
