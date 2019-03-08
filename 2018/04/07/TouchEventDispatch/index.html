@@ -53,7 +53,10 @@
 <li>一个事件序列只能被一个view拦截消耗</li>
 <li>当触摸事件发生后，其实就是调用了ACtivity的dispatchTouchEvent(MotionEvent e)方法，然后在这个方法中又调用了Window的这个方法，然后一层一层传递下去</li>
 <li>当一个view决定处理Down动作，这个事件的后来的所有动作都会交给这个view处理。</li>
-<li>一个触摸事件会从</li>
+<li>如果一个View拦截了事件，但没有消耗，同一个序列中的所有事件都不会再交给该view了，都会交给上一级处理</li>
+<li>onInterceptTouchEvent默认不拦截返回false</li>
+<li>onTouchEvent默认消耗返回true，如果是不可点击view即clickable为false，默认不消耗返回false</li>
+<li>处理事件的优先级onTouchListener &gt; onTouchEvent &gt; onClickListener</li>
 </ul>
 <h4 id="public-boolean-dispatchTouchEvent-MotionEvent-ev"><a href="#public-boolean-dispatchTouchEvent-MotionEvent-ev" class="headerlink" title="public boolean dispatchTouchEvent(MotionEvent ev)"></a>public boolean dispatchTouchEvent(MotionEvent ev)</h4><p>表示触摸事件的分发，返回值表示是否消耗该触摸事件。</p>
 <p>首先看一下Activity的这个方法</p>
