@@ -2,7 +2,7 @@
 <p>通过Controller连接Model和view，目的是使数据和界面分离。Model表示数据，View表示界面，Controller表示控制器。</p>
 <p>当View的数据变化时，会通知Controller而不是Model，Controller接收到view的通知后在Model中采取相应的行动</p>
 <p>2.LinearLayout注意事项</p>
-<p>   在LinearLayout中添加分割线</p>
+<p>   在LinearLayout中添加分割线<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">android:divider=&quot;@drawable&quot;</span><br><span class="line">android:showDividers = &quot;middle|end|beginning|none&quot;</span><br></pre></td></tr></table></figure></p>
 <p>3.实现图像的半透明</p>
 <ol>
 <li>自定义View，使用paint.setAlpha(int)(0-255)</li>
